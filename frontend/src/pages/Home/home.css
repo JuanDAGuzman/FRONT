@@ -4,11 +4,22 @@
     font-family: "Quicksand", serif;
   }
     
-  .title{
+  .title-h{
     font-size: 2.5rem;
     color: #b00000;
     font-weight: bold;
     text-align: center;
   } 
+
+  .logo {
+    position: absolute;
+    bottom: 0px;
+    left: -20px;
+  }
+  
+  .logo img {
+    width: 150px;
+    margin: 35px;
+  }
 
   

@@ -6,8 +6,8 @@ const Login: React.FC = () => {
         <div className='fondo'>
 
             <div className='container'>
-                <div className='sub-title'>
-                    <h2>Iniciar Sesión</h2>
+                <div className='form'>
+                    <h2 className='title-l'>Iniciar Sesión</h2>
                     <form>
                         <div className='input-box'>
                             <input type="email" placeholder='Email Andress' required/>

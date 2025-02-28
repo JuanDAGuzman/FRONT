@@ -6,8 +6,12 @@ const Home: React.FC = () => {
     const navigate = useNavigate()
     return (
         <div className='container'>
-            <h1 className='title'>Sistema Web de gestión de pacientes</h1>
+            <h1 className='title-h'>Sistema Web de gestión de pacientes</h1>
             <button type='submit' className='btn' onClick={() => navigate("/login")}>Ingresa</button>
+
+            <div className='logo'>
+                <img src="src/assets/umb-logo.png" alt="UMB logo" />
+            </div>
         </div> 
     )
 }

@@ -3,10 +3,6 @@
     padding: 0;
     font-family: "Quicksand", serif;
   }
-  
-  /* body {
-    
-  } */
 
   .fondo {
     display: flex;
@@ -17,17 +13,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-  }
-
-  .logo {
-    position: absolute;
-    bottom: 0px;
-    left: -20px;
-  }
-  
-  .logo img {
-    width: 150px;
-    margin: 35px;
   }
 
   .container {
@@ -48,16 +33,16 @@
     text-align: center;
   } */
   
-  .sub-title {
-    width: 50%;
-    color: #ffffff;
+  .form {
+    
     margin-left: auto;
     margin-top: 50px;
     margin-right: -160px;
   }
   
-  .sub-title h2 {
+  .title-l {
     margin-bottom: 20px;
+    color: #ffffff;
   }
   
   .input-box {
@@ -90,6 +75,17 @@
   .btn:hover {
     background: #900000;
     transform: scale(1.1); 
+  }
+
+  .logo {
+    position: absolute;
+    bottom: 0px;
+    left: -20px;
+  }
+  
+  .logo img {
+    width: 150px;
+    margin: 35px;
   }
   
 
