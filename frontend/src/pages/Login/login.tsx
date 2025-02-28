@@ -5,10 +5,6 @@ const Login: React.FC = () => {
     return (
         <div className='fondo'>
 
-            {/* <div className='title'>
-                <h1>Sistema Web de gestión de pacientes</h1>
-            </div> */}
-
             <div className='container'>
                 <div className='sub-title'>
                     <h2>Iniciar Sesión</h2>
