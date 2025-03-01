@@ -1,9 +1,9 @@
 @import "../../../styles/global.css";
 
-*{
+.login {
   font-family: var(--font-primary);
-  margin: var(--margin-page);
   padding: var(--padding-page);
+  margin: var(--margin-page);
 }
 
 .fondo {
@@ -49,11 +49,11 @@
     border: 3px solid var(--border);
     outline: none;
     background: var(--white);
-    width: 295px;
+    width: 300px;
   }
   
   .btn {
-    width: 98%;
+    width: 100%;
     padding: 10px;
     background: var(--red-secundary);
     border: none;
