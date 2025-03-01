@@ -1,10 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Quicksand", serif;
-  }
+@import "../../../styles/global.css";
 
-  .fondo {
+*{
+  font-family: var(--font-primary);
+  margin: var(--margin-page);
+  padding: var(--padding-page);
+}
+
+.fondo {
     display: flex;
     height: 100vh;
     align-items: center;
@@ -17,21 +19,16 @@
 
   .container {
     width: 100vh;
-    width: 100vh;
     display: flex;
     flex-direction: column;
   }
   
-  /* .title{
-
-  }  */
-
-  /* .title h1 {
+  .title{
+    margin-bottom: 20px;
+    color: var(--white);
     font-size: 2.5rem;
-    color: #b00000;
     font-weight: bold;
-    text-align: center;
-  } */
+  } 
   
   .form {
     
@@ -40,30 +37,25 @@
     margin-right: -160px;
   }
   
-  .title-l {
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-  
-  .input-box {
+  .input_box {
     width: 100%;
     margin-bottom: 15px;
   }
   
-  .input-box input {
-    color: black;
+  .input_box input {
+    color: var(--black);
     padding: 10px;
     border-radius: 8px;
-    border: 3px solid gray;
+    border: 3px solid var(--border);
     outline: none;
-    background: #fff;
+    background: var(--white);
     width: 295px;
   }
   
   .btn {
     width: 98%;
     padding: 10px;
-    background: #b00000;
+    background: var(--red-secundary);
     border: none;
     color: white;
     font-size: 16px;
@@ -73,20 +65,18 @@
   }
   
   .btn:hover {
-    background: #900000;
+    background: var(--red-primary);
     transform: scale(1.1); 
   }
 
-  .logo {
+  .logo_UMB {
     position: absolute;
     bottom: 0px;
     left: -20px;
   }
   
-  .logo img {
+  .logo_UMB img {
     width: 150px;
     margin: 35px;
   }
-  
-
   
