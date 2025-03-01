@@ -1,26 +1,28 @@
 import React from 'react'
-import './login.css' //se importan estilos de login
+import styles from "./login.module.css" // Importar estilos de Login modules
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
+    const navigate = useNavigate()
     return (
-        <div className='fondo'>
+        <div className={styles.fondo}>
 
-            <div className='container'>
-                <div className='form'>
-                    <h2 className='title-l'>Iniciar Sesión</h2>
+            <div className={styles.container}>
+                <div className={styles.form}>
+                    <h2 className={styles.title}>Iniciar Sesión</h2>
                     <form>
-                        <div className='input-box'>
+                        <div className={styles.input_box}>
                             <input type="email" placeholder='Email Andress' required/>
                         </div>
-                        <div className='input-box'>
+                        <div className={styles.input_box}>
                             <input type="password" placeholder='Password' required/>
                         </div>
-                        <button type='submit' className='btn'>Sign In</button>
+                        <button type='submit' className={styles.btn} onClick={() => navigate("/")}>Sign In</button>
                     </form>
                 </div>
 
-                <div className='logo'>
-                    <img src="src/assets/umb-logo.png" alt="UMB logo" />
+                <div className={styles.logo_UMB}>
+                    <img src="public/umb-logo.png" alt="UMB logo" />
                 </div>
             </div>
 
