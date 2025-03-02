@@ -19,7 +19,7 @@ const Login: React.FC = () => {
                             <div className={styles.input_box}>
                                 <input type="password" placeholder='Password' required/>
                             </div>
-                            <button type='submit' className={styles.btn} onClick={() => navigate("/")}>Sign In</button>
+                            <button type='submit' className={styles.btn} onClick={() => navigate("/twoFactor")}>Sign In</button>
                         </form>
                     </div>
 
