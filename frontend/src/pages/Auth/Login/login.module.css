@@ -4,79 +4,114 @@
   font-family: var(--font-primary);
   padding: var(--padding-page);
   margin: var(--margin-page);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/fondo.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }
 
 .fondo {
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    background-image: url(/fondo.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
 
-  .container {
-    width: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .title{
-    margin-bottom: 20px;
-    color: var(--white);
-    font-size: 2.5rem;
-    font-weight: bold;
-  } 
-  
-  .form {
-    
-    margin-left: auto;
-    margin-top: 50px;
-    margin-right: -160px;
-  }
-  
-  .input_box {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .input_box input {
-    color: var(--black);
-    padding: 10px;
-    border-radius: 8px;
-    border: 3px solid var(--border);
-    outline: none;
-    background: var(--white);
-    width: 300px;
-  }
-  
-  .btn {
-    width: 100%;
-    padding: 10px;
-    background: var(--red-secundary);
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .btn:hover {
-    background: var(--red-primary);
-    transform: scale(1.1); 
-  }
+.container {
+  grid-column-start: 3;
+  grid-row-start: 3;
+  grid-row: span 2 / span 2;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  .logo_UMB {
-    position: absolute;
-    bottom: 0px;
-    left: -20px;
-  }
-  
-  .logo_UMB img {
-    width: 150px;
-    margin: 35px;
-  }
-  
+.div1 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+.div2 {
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+
+.div3 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  grid-row-start: 3;
+}
+
+.div4 {
+  grid-column-start: 3;
+  grid-row-start: 2;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: bold;
+} 
+
+.form {
+  grid-column-start: 3;
+  grid-row-start: 4;
+  margin-left: auto;
+  margin-right: -164px;
+  margin-top: 366px;
+}
+
+.input_box {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input_box input {
+  color: var(--black);
+  padding: 10px;
+  border-radius: 8px;
+  border: 3px solid var(--border);
+  outline: none;
+  background: var(--white);
+  width: 300px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: var(--red-secundary);
+  border: none;
+  color: var(--white);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 6px;
+}
+
+.btn:hover {
+  background: var(--red-primary);
+  transform: scale(1.1); 
+}
+
+.logo_UMB {
+  position: absolute;
+  bottom: 0px;
+  left: -20px;
+}
+
+.logo_UMB img {
+  width: 150px;
+  margin: 35px;
+}
