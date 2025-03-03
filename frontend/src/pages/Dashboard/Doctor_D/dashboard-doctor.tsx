@@ -10,7 +10,7 @@ const Ddoctor: React.FC = () => {
                 <ul>
                     <li className={styles.profile}>
                         <img  
-                            src="../../../../public/6522581.png" 
+                            src="public/user.png" 
                             alt="Foto de perfil" 
                             className={styles.img}
                         />
@@ -18,10 +18,12 @@ const Ddoctor: React.FC = () => {
                     </li>
                     <li>Configuraciones</li>
                 </ul>
+                <div className={styles.button}>
                 <button type='submit' className={styles.salir} onClick={() => navigate("/")}> Cerrar Sesión </button>
+                </div>
             </nav>
             <div className={styles.container}>
-            
+            <h1 className={styles.title}>Vamos a hacer esto</h1>
             </div>
         </div>
     )
