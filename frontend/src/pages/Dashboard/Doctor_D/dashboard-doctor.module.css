@@ -68,7 +68,7 @@
 }
 
 .navbar li:hover {
-    color: var(--red-primary);
+    color: var(--red-secundary);
 }
 
 .profile {
@@ -83,11 +83,11 @@
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--red-primary);
+    border: 2px solid var(--red-secundary);
 }
 
 .profile:hover .img {
-    box-shadow: 0 0 5px 4px var(--red-secundary);
+    box-shadow: 0 0 5px 4px var(--red-primary);
 }
 
 .profil:hover {
@@ -96,7 +96,7 @@
 
 .salir {
     padding: 8px 20px;
-    background: var(--red-primary);
+    background: var(--red-secundary);
     border: none;
     color: var(--white);
     cursor: pointer;
@@ -111,14 +111,14 @@
 }
 
 .salir:hover {
-    background: var(--red-secundary);
+    background: var(--red-primary);
     transform: scale(1.2); 
 }
 
 .title {
     margin-top: 120px;
     font-size: 2rem;
-    color: var(--red-primary);
+    color: var(--red-secundary);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -129,23 +129,25 @@
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 3fr;  /* Primera columna grande, segunda más pequeña */
-    grid-template-rows: auto 1fr;  /* Título arriba, contenido abajo */
-    gap: 20px;
+    grid-template-columns: 1fr 3fr;  /* Sidebar más pequeño */
+    grid-template-rows: auto 1fr;  /* La segunda fila crece automáticamente */
     align-items: start;
     padding: 20px;
 }
 
 .important {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 1 / span 2; /* Ocupará desde la primera hasta la última fila */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    border: 2px solid var(--border);
     padding: 20px;
-    border-radius: 10px;
-    min-height: 300px; /* Agregar altura mínima para evitar que colapse */
+    height: 60%;  /* Se expande sin altura fija */
+    align-self: stretch; /* Se alarga en su fila */
+    margin-left: -100px;
+    margin-right: 50px;
+    background: rgb(224, 224, 224);
 }
 
 .sidebar {
@@ -154,27 +156,30 @@
     grid-row: 1;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     background: rgb(224, 224, 224);
     padding: 10px;
     gap: 40px;
     border-radius: 16px;
-    width: 150px;
+    width: 170px;
+    align-self: start; /* Evita que se expanda */
 }
 
 .button {
-    width: 100%;
+    width: 90%;
     padding: 15px;
-    background: var(--red-primary);
+    background: var(--red-secundary);
     color: var(--white);
     font-size: var(--font-subtitle);
     font-weight: bold;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
 .button:hover {
-    background: var(--red-secundary);
+    background: var(--red-primary);
+    transform: scale(1.1); 
 }
 

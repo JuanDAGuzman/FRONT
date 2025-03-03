@@ -41,8 +41,8 @@ const Ddoctor: React.FC = () => {
                     </div>
                 
                     <div className={styles.sidebar}>
-                        <button type='submit' className={styles.button}> Pacientes </button>
-                        <button type='submit' className={styles.button}> Notificaciones </button>
+                        <button type='submit' className={styles.button} onClick={() => navigate("/")}> Pacientes </button>
+                        <button type='submit' className={styles.button} onClick={() => navigate("/")}> Notificaciones </button>
                     </div>
             </div>
         </div>
