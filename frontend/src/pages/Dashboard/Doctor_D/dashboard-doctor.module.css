@@ -27,7 +27,7 @@
 }
 
 .navbar:hover {
-    box-shadow: 0 0 2px 4px var(--red-secundary);
+    box-shadow: 0 0 8px 8px var(--red-secundary);
 }
 
 .navbarleft {
@@ -147,8 +147,24 @@
     align-self: stretch; /* Se alarga en su fila */
     margin-left: -100px;
     margin-right: 50px;
-    background: rgb(224, 224, 224);
+    position: relative;
+    background: rgb(153, 153, 153); /* Color de fondo */
 }
+
+.important::before { 
+    content: "";
+    background: url('/logo_medicos2.png') no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* Centra la imagen completamente */
+    width: 100%; /* Ajusta el tamaño según necesites */
+    height: 100%;
+    opacity: 0.2;
+    z-index: 0;
+}
+
 
 .sidebar {
     margin-top: 70px;
