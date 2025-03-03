@@ -1,23 +1,24 @@
-import React from 'react'
-import styles from "./home.module.css" // Importar estilos de Home modules
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import Navbar from "./NavBar/Navbar";
+import Hero from "./Hero/Hero";
+import "./home_module.css";
+import Fondo from "../../assets/prueba.png";
 
 const Home: React.FC = () => {
-    const navigate = useNavigate()
-    return (
+  const bgImagen = {
+    backgroundImage: `url(${Fondo})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "bottom",
+    backgroundSize: "cover",
+    position: "relative",
+  };
 
-        <div className={styles.home}>
-            <div className={styles.container}>
-                <h1 className={styles.title}>Sistema Web de gestión de pacientes</h1>
-                <button type='submit' className={styles.btn} onClick={() => navigate("/login")}>Ingresa</button>
+  return (
+    <div style={bgImagen} className="overflow-hidden min-h-screen">
+      <Navbar />
+      <Hero />
+    </div>
+  );
+};
 
-                <div className={styles.logo_UMB}>
-                    <img src="public/umb-logo.png" alt="UMB logo" />
-                </div>
-            </div>
-        </div>
-
-    )
-}
-
-export default Home
+export default Home;
