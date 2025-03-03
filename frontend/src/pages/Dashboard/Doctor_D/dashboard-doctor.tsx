@@ -8,7 +8,14 @@ const Ddoctor: React.FC = () => {
         <div className={styles.DashDoctor}>
             <nav className={styles.navbar}>
                 <ul>
-                    <li>Perfil</li>
+                    <li className={styles.profile}>
+                        <img  
+                            src="../../../../public/6522581.png" 
+                            alt="Foto de perfil" 
+                            className={styles.img}
+                        />
+                        Perfil
+                    </li>
                     <li>Configuraciones</li>
                 </ul>
                 <button type='submit' className={styles.salir} onClick={() => navigate("/")}> Cerrar Sesión </button>
