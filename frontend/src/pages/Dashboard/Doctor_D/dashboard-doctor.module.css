@@ -12,13 +12,16 @@
 }
 
 .navbar {
-    width: 98%;
+    width: 96%;
     background: var(--border);
-    padding: 10px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
     border: 8px solid gray;
     box-shadow: 0 0 4px 8px rgb(70, 70, 70);
 }
@@ -27,14 +30,34 @@
     box-shadow: 0 0 2px 4px var(--red-secundary);
 }
 
+.navbarleft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbarcenter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--font-title);
+    font-weight: bold;
+    color: var(--white);
+}
+
+.navbarright{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 900px;
+    align-items: center;
     margin: 0;
     padding: 0;
-    flex-grow: 1;
-    align-items: center;
+    gap: 20px;
 }
 
 .navbar li {
@@ -71,11 +94,6 @@
     color: var(--red-primary);
 }
 
-.button {
-    display: flex;
-    align-items: center;
-}
-
 .salir {
     padding: 8px 20px;
     background: var(--red-secundary);
@@ -94,15 +112,12 @@
 
 .salir:hover {
     background: var(--red-primary);
-    transform: scale(1.07); 
+    transform: scale(1.2); 
 }
 
-
-
 .container {
-    margin-top: 10px;
-    width: 100vh;
-    width: 100vh;
+    margin-top: 100px; /* Para evitar que la barra de navegación lo cubra */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,6 +125,5 @@
 }
 
 .title {
-    background: var(--black);
-    color: var(--red-primary);
+    
 } 

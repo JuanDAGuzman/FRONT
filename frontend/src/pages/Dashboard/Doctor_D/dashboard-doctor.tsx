@@ -7,23 +7,33 @@ const Ddoctor: React.FC = () => {
     return (
         <div className={styles.DashDoctor}>
             <nav className={styles.navbar}>
-                <ul>
-                    <li className={styles.profile}>
-                        <img  
-                            src="public/user.png" 
-                            alt="Foto de perfil" 
-                            className={styles.img}
-                        />
-                        Perfil
-                    </li>
-                    <li>Configuraciones</li>
-                </ul>
-                <div className={styles.button}>
-                <button type='submit' className={styles.salir} onClick={() => navigate("/")}> Cerrar Sesión </button>
+                <div className={styles.navbarleft}>
+                    <ul>
+                        <li className={styles.profile}>
+                            <img  
+                                src="public/user.png" 
+                                alt="Foto de perfil" 
+                                className={styles.img}
+                            />
+                            Perfil
+                        </li>
+                    </ul>
+                </div>
+
+                <div className={styles.navbarcenter}>
+                    ¡Bienvenido!
+                </div>
+                   
+                <div className={styles.navbarright}>
+                    <ul>
+                        <li>Configuraciones</li>
+                    </ul>
+                    <button type='submit' className={styles.salir} onClick={() => navigate("/")}> Cerrar Sesión </button>
                 </div>
             </nav>
+
             <div className={styles.container}>
-            <h1 className={styles.title}>Vamos a hacer esto</h1>
+                <h1 className={styles.title}>Vamos a hacer esto</h1>
             </div>
         </div>
     )
