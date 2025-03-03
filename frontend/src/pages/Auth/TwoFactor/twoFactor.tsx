@@ -8,7 +8,7 @@ const TwoFactor: React.FC = () => {
 
         <div className={styles.twoFactor}>
             <div className={styles.container}>
-            <button type='submit' className={styles.btn} onClick={() => navigate("/")}>Sign In</button>
+            <button type='submit' className={styles.btn} onClick={() => navigate("/dashboard-doctor")}>Sign In</button>
             </div>
         </div>
     )
