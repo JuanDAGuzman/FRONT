@@ -139,8 +139,10 @@
     grid-column: 2;
     grid-row: 1 / span 2; /* Ocupará desde la primera hasta la última fila */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    flex-direction: column;  /* Apila los elementos verticalmente */
+    align-items: center;     /* Centra horizontalmente */
+    justify-content: flex-start; /* Alinea el contenido en la parte superior */
     border: 2px solid var(--border);
     padding: 20px;
     height: 60%;  /* Se expande sin altura fija */
@@ -165,6 +167,15 @@
     z-index: 0;
 }
 
+.subtitle {
+    font-size: var(--font-subtitle);
+    color: var(--red-secundary);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2px;  /* Ajusta según sea necesario */
+}
 
 .sidebar {
     margin-top: 70px;

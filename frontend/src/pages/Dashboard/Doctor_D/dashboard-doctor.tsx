@@ -35,9 +35,8 @@ const Ddoctor: React.FC = () => {
             <h1 className={styles.title}> Aca podras ver todo lo que necesitas </h1>
             
             <div className={styles.container}>
-
                     <div className={styles.important}>
-                    
+                        <h1 className={styles.subtitle}> Novedades Importantes </h1>
                     </div>
                 
                     <div className={styles.sidebar}>
