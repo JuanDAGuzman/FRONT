@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-red-400/40">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#B71C1C] shadow-lg transition-all duration-300">
       <div className="flex justify-between items-center sm:px-12 sm:py-6 px-4 py-3">
         <div>
           <img className="w-[50px]" src={Logo} alt="logo del sitio" />
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
             {navbarlinks.map((link) => (
               <li key={link.id}>
                 <a
-                  className="text-white text-sm sm:text-lg hover:text-red-700 transition-transform hover:scale-110 transform inline-block duration-300"
+                  className="text-white text-sm sm:text-lg hover:text-sky-300 transition-transform hover:scale-110 transform inline-block duration-300"
                   href={link.link}
                 >
                   {link.tittle}
@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
                   href={link.link}
                 >
                   <i
-                    className={`${link.icon} sm:text-2xl text-lg text-white hover:text-red-700 transition-all duration-300`}
+                    className={`${link.icon} sm:text-2xl text-lg text-white hover:text-sky-300 transition-all duration-300`}
                   ></i>
                 </a>
               </li>
@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
       {/* MENU MOBILE */}
 
       <div
-        className={`md:hidden absolute w-full bg-red-900 transition-all duration-300 ${
+        className={`md:hidden absolute w-full bg-[#B71C1C] transition-all duration-300 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
           {navbarlinks.map((link) => (
             <li key={link.id} className="py-2 text-center">
               <a
-                className="text-white hover:text-red-700 "
+                className="text-white hover:text-sky-300 "
                 href={link.link}
                 onClick={() => setIsOpen(false)}
               >
@@ -142,7 +142,7 @@ const Navbar: React.FC = () => {
                 href={link.link}
               >
                 <i
-                  className={`${link.icon} text-lg text-white hover:text-red-600 `}
+                  className={`${link.icon} text-lg text-white hover:text-sky-300 `}
                 ></i>
               </a>
             </li>
