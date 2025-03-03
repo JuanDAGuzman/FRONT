@@ -32,8 +32,18 @@ const Ddoctor: React.FC = () => {
                 </div>
             </nav>
 
+            <h1 className={styles.title}> Aca podras ver todo lo que necesitas </h1>
+            
             <div className={styles.container}>
-                <h1 className={styles.title}>Vamos a hacer esto</h1>
+
+                    <div className={styles.important}>
+                    
+                    </div>
+                
+                    <div className={styles.sidebar}>
+                        <button type='submit' className={styles.button}> Pacientes </button>
+                        <button type='submit' className={styles.button}> Notificaciones </button>
+                    </div>
             </div>
         </div>
     )

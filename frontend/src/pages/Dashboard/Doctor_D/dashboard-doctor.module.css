@@ -96,7 +96,7 @@
 
 .salir {
     padding: 8px 20px;
-    background: var(--red-secundary);
+    background: var(--red-primary);
     border: none;
     color: var(--white);
     cursor: pointer;
@@ -111,19 +111,70 @@
 }
 
 .salir:hover {
-    background: var(--red-primary);
+    background: var(--red-secundary);
     transform: scale(1.2); 
 }
 
-.container {
-    margin-top: 100px; /* Para evitar que la barra de navegación lo cubra */
-    width: 100%;
+.title {
+    margin-top: 120px;
+    font-size: 2rem;
+    color: var(--red-primary);
+    font-weight: bold;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    text-align: center;
+} 
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr;  /* Primera columna grande, segunda más pequeña */
+    grid-template-rows: auto 1fr;  /* Título arriba, contenido abajo */
+    gap: 20px;
+    align-items: start;
+    padding: 20px;
 }
 
-.title {
-    
-} 
+.important {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 300px; /* Agregar altura mínima para evitar que colapse */
+}
+
+.sidebar {
+    margin-top: 70px;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background: rgb(224, 224, 224);
+    padding: 10px;
+    gap: 40px;
+    border-radius: 16px;
+    width: 150px;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    background: var(--red-primary);
+    color: var(--white);
+    font-size: var(--font-subtitle);
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: var(--red-secundary);
+}
+
