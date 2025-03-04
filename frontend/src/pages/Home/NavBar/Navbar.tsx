@@ -14,7 +14,7 @@ const navbarlinks = [
   {
     id: 3,
     tittle: "Contacto",
-    link: "/",
+    link: "/Contact",
   },
   {
     id: 4,

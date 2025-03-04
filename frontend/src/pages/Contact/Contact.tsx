@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSupp from "./HeroSupp.tsx/HeroSupp";
+import ContactHero from "../Contact/ContactHero/ContactHero";
 import Navbar from "./../Home/NavBar/Navbar";
 import Footer from "./../Home/Footer/Footer";
 
-const Support: React.FC = () => {
+const Contact: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navbar */}
@@ -11,7 +11,7 @@ const Support: React.FC = () => {
 
       {/* Contenido principal */}
       <div className="flex-grow">
-        <HeroSupp />
+        <ContactHero />
       </div>
 
       {/* Footer */}
@@ -20,4 +20,4 @@ const Support: React.FC = () => {
   );
 };
 
-export default Support;
+export default Contact;
