@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "./NavBar/Navbar";
 import Hero from "./Hero/Hero";
+import Footer from "./Footer/Footer";
+
 import "./home_module.css";
 // import Fondo from "../../assets/prueba.png";
 
@@ -17,6 +19,7 @@ const Home: React.FC = () => {
     <div>
       <Navbar />
       <Hero />
+      <Footer></Footer>
     </div>
     //  style={bgImagen} className="overflow-hidden min-h-screen">
   );
