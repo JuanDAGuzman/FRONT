@@ -6,6 +6,8 @@ import Doctor_D from './pages/Dashboard/Doctor_D/dashboard-doctor'
 import Doctor_M from './pages/Management/Doctor_M/list-patients-doctor'
 import Us from "./pages/Us/Us";
 import Support from "./pages/Support/Support";
+import Contact from "./pages/Contact/Contact";
+
 
 
 
@@ -20,6 +22,8 @@ function App() {
         <Route path="list_patients" element={<Doctor_M />} />
         <Route path="Us" element={<Us />} />
         <Route path="Support" element={<Support />} />
+        <Route path="Contact" element={<Contact />} />
+
 
       </Routes>
     </Router>
