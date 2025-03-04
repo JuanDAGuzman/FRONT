@@ -16,12 +16,13 @@ const Ddoctor: React.FC = () => {
                                 className={styles.img}
                             />
                             Perfil
+                            <a href=""></a>
                         </li>
                     </ul>
                 </div>
 
                 <div className={styles.navbarcenter}>
-                    ¡Bienvenido!
+                    ¡Bienvenido, Nombre!
                 </div>
                    
                 <div className={styles.navbarright}>

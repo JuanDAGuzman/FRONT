@@ -7,6 +7,7 @@ import Doctor_M from './pages/Management/Doctor_M/list-patients-doctor'
 import Us from "./pages/Us/Us";
 import Support from "./pages/Support/Support";
 import Contact from "./pages/Contact/Contact";
+import Support_D from "./pages/Support_Doctor/Support_D";
 
 
 
@@ -22,9 +23,8 @@ function App() {
         <Route path="list_patients" element={<Doctor_M />} />
         <Route path="Us" element={<Us />} />
         <Route path="Support" element={<Support />} />
+        <Route path="Support_D" element={<Support_D />} />
         <Route path="Contact" element={<Contact />} />
-
-
       </Routes>
     </Router>
   );
