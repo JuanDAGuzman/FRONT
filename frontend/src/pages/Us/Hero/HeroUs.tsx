@@ -4,12 +4,12 @@ const developers = [
   {
     name: "Juan Diego Arevalo",
     github: "https://github.com/JuanDAGuzman",
-    info: "Desarrollador Full Stack con experiencia en React y Node.js.",
+    info: "Ingeniero en Desarrollo de Software | Desarrollo Web y Backend | Integración de sistemas, bases de datos y desarrollo de APIs",
   },
   {
     name: "Camilo Andres Gomez",
     github: "https://github.com/CamAGomezB27",
-    info: "Especialista en UI/UX y desarrollo frontend con React y Tailwind CSS.",
+    info: "Ingeniero en Desarrollo de Software en formación | Desarrollo Web, Bases de Datos & BI | Dominio en JavaScript, Python, HTML, CSS, MySQL | Enfocado en Soluciones Innovadoras",
   },
   {
     name: "Felipe Cruz",
@@ -20,7 +20,7 @@ const developers = [
 
 const HeroUs: React.FC = () => {
   return (
-    <div className="container mx-auto py-12">
+    <div className="flex flex-col justify-center items-center min-h-[calc(100vh-96px-30px)] py-12">
       <h1 className="text-3xl font-bold text-center mb-8">Nosotros</h1>
       <div className="flex flex-wrap justify-center gap-6">
         {developers.map((dev, index) => (

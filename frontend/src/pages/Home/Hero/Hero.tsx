@@ -4,10 +4,11 @@ import Logo from "../../../assets/logo2.png";
 
 const Hero: React.FC = () => {
   return (
-    <section className="mt-36 text-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center px-8 py-4 ">
+    <section className="min-h-[calc(100vh-124px)] flex items-center justify-center text-white">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center px-8 py-4">
         <div className="flex flex-col items-center text-center gap-y-4">
-          <img className="w-[400px] md:w-[500px]" src={Logo} alt="Logo2-app" />
+          <img className="w-[400px] md:w-[500px] mt-20" src={Logo} alt="Logo2-app" />
 
           <p className="text-black px-4 py-2 max-w-2xl">
             El pie diabético puede presentar señales tempranas que no deben

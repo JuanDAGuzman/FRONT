@@ -19,7 +19,7 @@ const navbarlinks = [
   {
     id: 4,
     tittle: "Soporte",
-    link: "#",
+    link: "/Support",
   },
 ];
 

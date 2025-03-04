@@ -5,6 +5,8 @@ import TwoFactor from './pages/Auth/TwoFactor/twoFactor'
 import Doctor_D from './pages/Dashboard/Doctor_D/dashboard-doctor'
 import Doctor_M from './pages/Management/Doctor_M/list-patients-doctor'
 import Us from "./pages/Us/Us";
+import Support from "./pages/Support/Support";
+
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="dashboard-doctor" element={<Doctor_D />} />
         <Route path="list_patients" element={<Doctor_M />} />
         <Route path="Us" element={<Us />} />
+        <Route path="Support" element={<Support />} />
+
       </Routes>
     </Router>
   );
