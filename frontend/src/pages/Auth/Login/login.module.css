@@ -69,7 +69,7 @@
   grid-row-start: 4;
   margin-left: auto;
   margin-right: -164px;
-  margin-top: 366px;
+  margin-top: 380px;
 }
 
 .input_box {
@@ -90,7 +90,7 @@
 .btn {
   width: 100%;
   padding: 10px;
-  background: var(--red-secundary);
+  background: var(--red-primary);
   border: none;
   color: var(--white);
   font-size: 16px;
@@ -101,7 +101,7 @@
 }
 
 .btn:hover {
-  background: var(--red-primary);
+  background: var(--red-secundary);
   transform: scale(1.1); 
 }
 
