@@ -11,110 +11,6 @@
     height: 100vh;
 }
 
-.navbar {
-    width: 100%;
-    background: var(--border);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 70px;
-    border: 8px solid gray;
-    box-shadow: 0 0 4px 8px rgb(70, 70, 70);
-}
-
-.navbar:hover {
-    box-shadow: 0 0 8px 8px var(--red-secundary);
-}
-
-.navbarleft {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navbarcenter {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: var(--font-title);
-    font-weight: bold;
-    color: var(--white);
-}
-
-.navbarright{
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-}
-
-.navbar li {
-    color: var(--white);
-    cursor: pointer;
-    font-size: var(--font-subtitle);
-    font-weight: bold;
-}
-
-.navbar li:hover {
-    color: var(--red-secundary);
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.img {
-    background: var(--white);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--red-secundary);
-}
-
-.profile:hover .img {
-    box-shadow: 0 0 5px 4px var(--red-primary);
-}
-
-.profil:hover {
-    color: var(--red-primary);
-}
-
-.salir {
-    padding: 8px 20px;
-    background: var(--red-secundary);
-    border: none;
-    color: var(--white);
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: var(--font-subtitle);
-    font-weight: bold;
-    display: flex;
-    min-width: 100px;
-    height: auto;  /* Permite que la altura se ajuste automáticamente */
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-}
-
-.salir:hover {
-    background: var(--red-primary);
-    transform: scale(1.2); 
-}
-
 .container{
     width: 100%;
     height: 100vh;
@@ -126,7 +22,7 @@
 .title {
     margin-top: 85px;
     font-size: 2rem;
-    color: var(--red-secundary);
+    color: var(--red-primary);
     font-weight: bold;
     display: flex;
 } 
@@ -141,7 +37,7 @@
     width: auto;
     height: auto;
     padding: 8px;
-    background: var(--red-secundary);
+    background: var(--red-primary);
     color: var(--white);
     font-size: var(--font-subtitle);
     font-weight: bold;
@@ -152,7 +48,7 @@
 }
 
 .button:hover {
-    background: var(--red-primary);
+    background: var(--red-secundary);
     transform: scale(1.1); 
 }
 
@@ -184,7 +80,7 @@
     padding: 10px;
     border-radius: 12px;
     outline: none;
-    background: var(--border);
+    background: rgb(184, 182, 182);
     font-size: var(--font-subtitle);
-    color: var(--white);
+    color: var(--black);
 }

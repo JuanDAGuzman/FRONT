@@ -1,37 +1,22 @@
 import React from 'react'
 import styles from "./list-patients-doctor.module.css" 
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import Navbar_G from '../../../components/NavBars/Navbar_Globla';
 
 const List_Patients: React.FC = () => {
     const navigate = useNavigate()
     return (
         <div className={styles.List_Patients_Doc}>
-            <nav className={styles.navbar}>
-                <div className={styles.navbarleft}>
-                    <ul>
-                        <li className={styles.profile}>
-                            <img  
-                                src="public/user.png" 
-                                alt="Foto de perfil" 
-                                className={styles.img}
-                            />
-                            
-                            <Link to="/dashboard-doctor">Regresar</Link>
-                        </li>
-                    </ul>
-                </div>
 
-                <div className={styles.navbarcenter}>
-                    Nombre, Aca podemos organizar los Pacientes
-                </div>
-                   
-                <div className={styles.navbarright}>
-                    
-                    <button type='submit' className={styles.salir} onClick={() => navigate("/support_D")}> Soporte </button>
-                </div>
-            </nav>
-
+            <Navbar_G 
+                profileText='Regresar'
+                profilePath='/dashboard-doctor'
+                profileImg='public/user.png'
+                centerText='Nombre, Aca podemos organizar los pacientes'
+                menuItems={[]}
+                onLogout={() => navigate('/Support_D')}
+                logoutText='Soporte'
+            />
             <div className={styles.container}>
                 <h1 className={styles.title}>Lista de Pacientes</h1>
                 <div className={styles.btn}>
