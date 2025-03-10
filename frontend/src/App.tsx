@@ -8,6 +8,8 @@ import Us from "./pages/Us/Us";
 import Support from "./pages/Support/Support";
 import Contact from "./pages/Contact/Contact";
 import Support_D from "./pages/Support_Doctor/Support_D";
+import DashAdmin from "./pages/Dashboard/Admin-D/dashboard-admin";
+import Roles_Admin from "./pages/Management/Admin-M/G-Roles/roles-admin";
 
 
 
@@ -25,6 +27,8 @@ function App() {
         <Route path="Support" element={<Support />} />
         <Route path="Support_D" element={<Support_D />} />
         <Route path="Contact" element={<Contact />} />
+        <Route path="dashboard-admin" element={<DashAdmin />} />
+        <Route path="Manage-roles" element={<Roles_Admin />} />
       </Routes>
     </Router>
   );
