@@ -39,12 +39,12 @@ const List_Patients: React.FC = () => {
                         <input type="text" placeholder='Ingrese Nombre' className={styles.buscar}/>
                     </div>
                     <div className={styles.group}>
-                        <label htmlFor="documento" className={styles.label}>Centro de salud</label>
-                        <input type="text" placeholder='Centro de Salud' className={styles.buscar}/>
+                        <label htmlFor="documento" className={styles.label}>Ciudad</label>
+                        <input type="text" placeholder='Ciudad' className={styles.buscar}/>
                     </div>
                     <div className={styles.group}>
-                        <label htmlFor="documento" className={styles.label}>Departamento</label>
-                        <input type="text" placeholder='Departamento' className={styles.buscar}/>
+                        <label htmlFor="documento" className={styles.label}>Centro de salud</label>
+                        <input type="text" placeholder='Centro de Salud' className={styles.buscar}/>
                     </div>
                 </section>
 
@@ -52,9 +52,9 @@ const List_Patients: React.FC = () => {
                 <div className={styles.gridinfo}>
                     <span>Cédula</span>
                     <span>Nombre</span>
-                    <span>Diagnostico</span>
+                    <span>Ciudad</span>
                     <span>Centro de Salud</span>
-                    <span>Departamento</span>
+                    <span>Diagnostico</span>
                     <span className={styles.acciones}>ACCIONES</span>
                 </div>
             </div>

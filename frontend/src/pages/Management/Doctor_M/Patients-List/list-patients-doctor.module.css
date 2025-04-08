@@ -66,7 +66,7 @@
 .sectBuscar {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 25px;
     margin-top: 20px;
     justify-content: start;
 }
@@ -76,12 +76,14 @@
     flex-direction: column;
     gap: 5px;
     align-items: start;
+    width: 200px;
 }
 
 .label {
     font-size: var(--font-subtitle);
     font-weight: bold;
     color: var(--border);
+    padding-left: 5px;
 }
 
 .buscar {
@@ -101,7 +103,8 @@
     font-weight: bold;
     color: var(--red-secundary);
     display: grid;
-    grid-template-columns: repeat(5, 1fr) 300px; /* Último más angosto para Acciones */
+    grid-template-columns: 1.2fr 2fr 1.5fr 2fr 2fr 3fr;
+    align-items: center;
     padding: 15px 20px;
     margin-top: 30px;
     border-bottom: 2px solid var(--red-primary); /* <- Esta es la línea */
@@ -109,4 +112,5 @@
 
 .acciones {
     text-align: center;
+    justify-self: center;
 }
