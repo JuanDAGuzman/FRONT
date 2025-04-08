@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./list-patients-doctor.module.css" 
 import { useNavigate } from "react-router-dom";
-import Navbar_G from '../../../components/NavBars/Navbar_Globla';
+import Navbar_G from '../../../../components/NavBars/Navbar_Globla';
 
 const List_Patients: React.FC = () => {
     const navigate = useNavigate()
@@ -12,16 +12,23 @@ const List_Patients: React.FC = () => {
                 profileText='Regresar'
                 profilePath='/dashboard-doctor'
                 profileImg='public/user.png'
-                centerText='Nombre, Aca podemos organizar los pacientes'
+                centerText='Nombre, Aca podras ver tus pacientes'
                 menuItems={[]}
                 onLogout={() => navigate('/Support_D')}
                 logoutText='Soporte'
             />
+
+            {/* Imagen medicos */}
+            <img src="../../../../public/logo_medicos2.png" alt="Logo medicos" className={styles.logo} />
+
+            {/* CONTENDOR */}
             <div className={styles.container}>
                 <h1 className={styles.title}>Lista de Pacientes</h1>
                 <div className={styles.btn}>
                     <button type='submit' className={styles.button} onClick={() => navigate("/")}> Registro de Pacientes </button>
                 </div>
+
+                {/* FILTROS */}
                 <section className={styles.sectBuscar}>
                     <div className={styles.group}>
                         <label htmlFor="documento" className={styles.label}>Documento de Identidad</label>
@@ -40,6 +47,16 @@ const List_Patients: React.FC = () => {
                         <input type="text" placeholder='Departamento' className={styles.buscar}/>
                     </div>
                 </section>
+
+                {/* INFORMACIÓN */}
+                <div className={styles.gridinfo}>
+                    <span>Cédula</span>
+                    <span>Nombre</span>
+                    <span>Diagnostico</span>
+                    <span>Centro de Salud</span>
+                    <span>Departamento</span>
+                    <span className={styles.acciones}>ACCIONES</span>
+                </div>
             </div>
 
         </div>
