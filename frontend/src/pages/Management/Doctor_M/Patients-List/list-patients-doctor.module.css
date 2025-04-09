@@ -14,8 +14,8 @@
 .logo {
     position: absolute;
     top: 120px; /* ajusta según la altura de tu navbar */
-    right: 0;
-    width: 240px;
+    right: -55px;
+    width: 300px;
     height: auto;
     object-fit: contain;
     z-index: 1;

@@ -24,7 +24,7 @@ const Ddoctor: React.FC = () => {
                 
                     <div className={styles.sidebar}>
                         <h1 className={styles.subtitle}> Menú </h1>
-                        <button type='submit' className={styles.button} onClick={() => navigate("/list_patients")}> Pacientes </button>
+                        <button type='submit' className={styles.button} onClick={() => navigate("/list_patients_doctor")}> Pacientes </button>
                         <button type='submit' className={styles.button} onClick={() => navigate("/")}> Notificaciones </button>
                     </div>
             </div>

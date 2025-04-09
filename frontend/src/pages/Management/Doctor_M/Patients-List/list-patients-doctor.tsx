@@ -25,7 +25,7 @@ const List_Patients: React.FC = () => {
             <div className={styles.container}>
                 <h1 className={styles.title}>Lista de Pacientes</h1>
                 <div className={styles.btn}>
-                    <button type='submit' className={styles.button} onClick={() => navigate("/")}> Registro de Pacientes </button>
+                    <button type='submit' className={styles.button} onClick={() => navigate("/register_patients_doctor")}> Registro de Pacientes </button>
                 </div>
 
                 {/* FILTROS */}

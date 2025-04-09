@@ -60,7 +60,7 @@
 .title {
   margin-bottom: 20px;
   color: var(--white);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
 } 
 
@@ -68,12 +68,12 @@
   grid-column-start: 3;
   grid-row-start: 4;
   margin-left: auto;
-  margin-right: -164px;
-  margin-top: 380px;
+  margin-right: -200px;
+  margin-top: 450px;
 }
 
 .input_box {
-  width: 100%;
+  width: 150%;
   margin-bottom: 15px;
 }
 
@@ -84,11 +84,13 @@
   border: 3px solid var(--border);
   outline: none;
   background: var(--white);
-  width: 300px;
+  width: 400px;
+  height: 60px;
 }
 
 .btn {
   width: 100%;
+  height: 60px;
   padding: 10px;
   background: var(--red-primary);
   border: none;
@@ -112,6 +114,6 @@
 }
 
 .logo_UMB img {
-  width: 150px;
+  width: 250px;
   margin: 35px;
 }

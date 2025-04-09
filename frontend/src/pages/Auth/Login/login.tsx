@@ -14,10 +14,10 @@ const Login: React.FC = () => {
                         <h2 className={styles.title}>Iniciar Sesión</h2>
                         <form>
                             <div className={styles.input_box}>
-                                <input type="email" placeholder='Email Andress' required/>
+                                <input type="email" placeholder='Correo Electronico' required/>
                             </div>
                             <div className={styles.input_box}>
-                                <input type="password" placeholder='Password' required/>
+                                <input type="password" placeholder='Contraseña' required/>
                             </div>
                             <button type='submit' className={styles.btn} onClick={() => navigate("/twoFactor")}>Sign In</button>
                         </form>
