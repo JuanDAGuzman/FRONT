@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./register-patientes-doctor.module.css"
 import { useNavigate } from "react-router-dom";
 import Navbar_G from "../../../../components/NavBars/Navbar_Globla";
 
 const Registro_Patient: React.FC = () => {
     const navigate = useNavigate()
+
     return (
         <div className={styles.Registro_Patient}>
 
@@ -33,20 +34,46 @@ const Registro_Patient: React.FC = () => {
                             <label htmlFor="nombre">Nombre</label>
                             <input type="text" id="nombre" placeholder="Escribe el o los nombres" className={styles.info}/>
 
+                            
                             <label htmlFor="Documento">Documento de Identidad</label>
-                            <input type="text" id="Documento" placeholder="Escribe el número del documento " className={styles.info}/>
-
+                            <div className={styles.docRow}>
+                                <select id="Documento" className={styles.Select} aria-label="Tipo de Documento" defaultValue="" >
+                                    <option value="" disabled hidden>TIPO</option>
+                                    <option value="CC">CC</option>
+                                    <option value="TI">TI</option>
+                                    <option value="CE">CE</option>
+                                    <option value="RC">RC</option>
+                                </select>
+                                <input type="text" id="Documento" placeholder="Número de Documento" className={styles.info}/>
+                            </div>
+                            
                             <label htmlFor="sexo">Sexo</label>
                                 <div className={styles.sexo}>
                                     <label><input type="radio" name="sexo" /> Masculino </label>
                                     <label><input type="radio" name="sexo" /> Femenino </label>
                                 </div>
 
-                            <label htmlFor="diagnostico">Diagnostico</label>
-                            <input type="text" id="Diagnostico" placeholder="Escribe el diagnostico del paciente " className={styles.info}/>
+                            <label htmlFor="diagnostico">Diagnóstico</label>
+                            <select id="diagnostico" className={styles.SelectLine} aria-label="Diagnostico Paciente" defaultValue="">
+                                <option value="" disabled hidden> Elija el Diagnostico</option>
+                                <option value="No complicado">Pie diabético no complicado</option>
+                                <option value="Infección">Pie diabético con infección</option>
+                                <option value="Isquemia">Pie diabético con isquemia</option>
+                                <option value="Úlcera">Úlcera neuropática</option>
+                                <option value="Osteoarticular">Infección osteoarticular</option>
+                                <option value="Amputación">Amputación previa</option>
+                            </select>
 
                             <label htmlFor="Acceso_vas">Acceso Vascular</label>
-                            <input type="text" id="acceso" placeholder="Ej: Catéter, Fístula, etc." className={styles.info}/>
+                            <select id="Acceso_vas" className={styles.SelectLine} aria-label="Acceso Vascular" defaultValue="" >
+                                <option value="" disabled hidden> Elija el tipo de Acceso</option>
+                                <option value="Catéter temporal">Catéter temporal</option>
+                                <option value="Catéter tunelizado">Catéter tunelizado</option>
+                                <option value="Fístula AV">Fístula arteriovenosa</option>
+                                <option value="Injerto">Injerto protésico</option>
+                                <option value="Ninguno">Ninguno</option>
+                            </select>
+
                         </div>
 
                         <div className={styles.column}>
@@ -58,10 +85,18 @@ const Registro_Patient: React.FC = () => {
                             <input type="date" id="fecha" placeholder="" className={styles.info}/>
 
                             <label htmlFor="ciudad">Ciudad</label>
-                            <input type="text" id="ciudad" placeholder="Escribe la ciudad de residencia" className={styles.info}/>
+                            <select id="ciudad" className={styles.SelectLine} aria-label="Ciudad de Residencia" defaultValue="">
+                                <option value="" disabled hidden>Elija la Ciudad</option>
+                                <option value="">Bogotá</option>
+                                <option value="">Medellin</option>
+                                <option value="">Barranquilla</option>
+                                <option value="">Cali</option>
+                            </select>
 
                             <label htmlFor="centro_salud">Centro de Salud</label>
-                            <input type="text" id="nombre" placeholder="Escribe el centro de salud" className={styles.info}/>
+                            
+
+
                         </div>     
                     </div>
                     <div className={styles.buttons}>

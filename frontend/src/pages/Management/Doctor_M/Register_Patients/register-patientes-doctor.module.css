@@ -66,12 +66,49 @@
     min-width: 500px;
 }
 
+.docRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.Select {
+    padding: 5px;
+    font-size: var(--font-subtitle);
+    border: none;
+    background: transparent;
+    outline: none;
+    font-weight: bold;
+}
+
+.SelectLine {
+    border: none;
+    border-bottom: 2px solid var(--black);
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    color: var(--black); /* valor por defecto */
+  }
+  
+  /* ESTILO ESPECIAL PARA PLACEHOLDER DEL SELECT */
+  .SelectLine:has(option:checked[value=""]) {
+    color: gray;
+  }
+  
+  /* Opciones del select SIEMPRE negras */
+  .SelectLine option {
+    color: var(--black);
+  }
+
 .info {
     border: none;
     border-bottom: 2px solid var(--black);
     padding: 5px;
     font-size: 1rem;
     outline: none;
+    width: 100%;
 }
 
 .buttons {
