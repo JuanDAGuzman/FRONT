@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "./register-patientes-doctor.module.css"
 import { useNavigate } from "react-router-dom";
 import Navbar_G from "../../../../components/NavBars/Navbar_Globla";
@@ -94,9 +93,14 @@ const Registro_Patient: React.FC = () => {
                             </select>
 
                             <label htmlFor="centro_salud">Centro de Salud</label>
+                            <select id="centro_salud" className={styles.SelectLine} aria-label="Centro de Salud" defaultValue="">
+                                <option value="" disabled hidden>Elija el Centro de Salud</option>
+                                <option value="Fundación Santa Fe de Bogotá">Fundación Santa Fe de Bogotá</option>
+                                <option value="Hospital Pablo Tobón Uribe">Hospital Pablo Tobón Uribe</option>
+                                <option value="Hospital General de Barranquilla">Hospital General de Barranquilla</option>
+                                <option value="Fundación Valle del Lili">Fundación Valle del Lili</option>
+                            </select>
                             
-
-
                         </div>     
                     </div>
                     <div className={styles.buttons}>
