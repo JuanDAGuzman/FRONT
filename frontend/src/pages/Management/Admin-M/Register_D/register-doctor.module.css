@@ -1,0 +1,155 @@
+@import "../../../../styles/global.css";
+
+.Register_Doctor {
+    font-family: var(--font-primary);
+    padding: var(--padding-page);
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+  
+  .Content {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .title {
+    margin-top: 105px;
+    font-size: 2rem;
+    color: var(--red-primary);
+    font-weight: bold;
+    display: flex;
+  }
+  
+  .formContainer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border: 4px solid var(--red-primary);
+    border-radius: 16px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .topSection {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .imageContainer {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ccc;
+  }
+  
+  .profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .editOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .imageContainer:hover .editOverlay {
+    opacity: 1;
+  }
+  
+  .editOverlay i {
+    font-size: 1.8rem;
+    color: white;
+  }
+  
+  .inputsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 300px;
+    flex: 1;
+  }
+  
+  .info {
+    border: none;
+    border-bottom: 2px solid var(--black);
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+    width: 100%;
+  }
+  
+  .docRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .Select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    background-color: #fff;
+    width: 150px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .cancelButton,
+  .registerButton {
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    color: var(--white);
+    background-color: var(--red-primary);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .cancelButton:hover,
+  .registerButton:hover {
+    background-color: var(--red-secundary);
+    transform: scale(1.05);
+  }
+  

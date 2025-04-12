@@ -18,7 +18,7 @@ const Manage_roles: React.FC = () => {
             {/* Barra de navegación */}
             <Navbar_G
                 profileText="Regresar"
-                profilePath="/dashboard-Admin"
+                profilePath="/dashboard_admin"
                 profileImg="public/user.png"
                 centerText="Gestión de Roles"
                 menuItems={[{ label: "Configuraciones", path: "/" }]}
@@ -31,7 +31,7 @@ const Manage_roles: React.FC = () => {
                 <aside className={styles.sidebar}>
                     <Button 
                         className={styles.button} 
-                        onClick={() => alert("Crear nuevo rol")}
+                        onPress={() => alert("Crear nuevo rol")}
                     >
                         ➕ Crear Nuevo Rol
                     </Button>

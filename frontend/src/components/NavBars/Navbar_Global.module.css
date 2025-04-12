@@ -13,6 +13,7 @@
     left: 0;
     height: 90px;
     transition: all 0.3s ease-in-out;
+    z-index: 1000;
 }
 
 .navbar:hover {

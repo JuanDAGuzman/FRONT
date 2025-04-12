@@ -23,9 +23,9 @@ const DashAdmin: React.FC = () => {
             
                 <div className={styles.sidebar}>
                     <h1 className={styles.subtitle}> Menú </h1>
-                    <button type='submit' className={styles.button} onClick={() => navigate("/")}> Usuarios </button>
-                    <button type='submit' className={styles.button} onClick={() => navigate("/Manage-roles")}> Roles </button>
-                    <button type='submit' className={styles.button} onClick={() => navigate("/")}> Notificaciones </button>
+                    <button type='submit' className={styles.button} onClick={() => navigate("/user_list_admin")}> Usuarios </button>
+                    <button type='submit' className={styles.button} onClick={() => navigate("/manage_roles")}> Roles </button>
+                    <button type='submit' className={styles.button} onClick={() => navigate("/notifications_admin")}> Notificaciones </button>
                 </div>
 
 

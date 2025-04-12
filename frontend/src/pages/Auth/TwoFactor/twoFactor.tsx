@@ -9,7 +9,7 @@ const TwoFactor: React.FC = () => {
         <div className={styles.twoFactor}>
             <div className={styles.container}>
             <button type='submit' className={styles.btn} onClick={() => navigate("/dashboard_doctor")}>DASHBOARD DOCTOR</button>
-            <button type='submit' className={styles.btn} onClick={() => navigate("/dashboard-admin")}>DASHBOARD ADMIN</button>
+            <button type='submit' className={styles.btn} onClick={() => navigate("/dashboard_admin")}>DASHBOARD ADMIN</button>
             <button type='submit' className={styles.btn} onClick={() => navigate("")}>DASHBOARD PACIENTE</button>
             </div>
         </div>
