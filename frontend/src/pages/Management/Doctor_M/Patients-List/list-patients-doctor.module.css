@@ -80,7 +80,7 @@
 }
 
 .label {
-    font-size: var(--font-subtitle);
+    font-size: var(--font-text);
     font-weight: bold;
     color: var(--border);
     padding-left: 5px;
@@ -94,7 +94,7 @@
     border-radius: 12px;
     outline: none;
     background: rgb(184, 182, 182);
-    font-size: var(--font-subtitle);
+    font-size: var(--font-text);
     color: var(--black);
 }
 
