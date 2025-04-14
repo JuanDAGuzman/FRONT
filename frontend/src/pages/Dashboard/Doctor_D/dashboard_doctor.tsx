@@ -2,9 +2,11 @@ import React from 'react'
 import styles from "./dashboard-doctor.module.css" // Importar estilos de Login modules
 import { useNavigate } from "react-router-dom";
 import Navbar_G from '../../../components/NavBars/Navbar_Globla';
+import Calendarcomponent from '../../../components/Calendar/Calendar';
 
 const Ddoctor: React.FC = () => {
     const navigate = useNavigate()
+
     return (
         <div className={styles.DashDoctor}>
             <Navbar_G 
@@ -20,6 +22,15 @@ const Ddoctor: React.FC = () => {
             <div className={styles.container}>
                     <div className={styles.important}>
                         <h1 className={styles.subtitle}> Novedades Importantes </h1>
+                        <div className={styles.contentContainer}>
+                            <div className={styles.cards}>
+
+                            </div>
+                            <div className={styles.calendar}>
+                                {/* CALENDAR */}
+                                <Calendarcomponent />
+                            </div>
+                        </div>
                     </div>
                 
                     <div className={styles.sidebar}>

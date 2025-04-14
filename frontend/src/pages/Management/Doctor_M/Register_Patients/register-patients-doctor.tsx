@@ -23,7 +23,7 @@ const Registro_Patient: React.FC = () => {
 
             {/* CONTENDOR PAGINA */}
             <div className={styles.container}>
-                <h1 className={styles.title}>Registor De Pacientes</h1>
+                <h1 className={styles.title}>Registro de pacientes</h1>
 
                 {/* CONTENDOR REGISTRO */}
                 <div className={styles.Content}>
