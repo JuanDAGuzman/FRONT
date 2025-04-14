@@ -2,20 +2,21 @@
 
 /* Estilos globales para react-calendar */
 :global(div.react-calendar) {
-  width: 450px !important;
+  width: 465px !important;
   font-size: 1.1rem;
   border-radius: 16px;
   padding: 12px;
   background-color: var(--white);
   font-family: var(--font-title);
-  box-shadow: 0 10px 25px rgba(231, 16, 16, 0.15);
+  box-shadow: 0 12px 24px rgb(112, 2, 2);
   transition: all 0.3s ease;
 }
 
 
 :global(.react-calendar:hover) {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(231, 16, 16, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 18px 32px rgb(138, 2, 2);
 }
 
 :global(.react-calendar__navigation) {

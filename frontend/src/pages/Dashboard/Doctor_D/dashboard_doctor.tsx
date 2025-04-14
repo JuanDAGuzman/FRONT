@@ -21,13 +21,14 @@ const Ddoctor: React.FC = () => {
             
             <div className={styles.container}>
                     <div className={styles.important}>
-                        <h1 className={styles.subtitle}> Novedades Importantes </h1>
+                        <h1 className={styles.importantTitle}> Novedades Importantes </h1>
                         <div className={styles.contentContainer}>
                             <div className={styles.cards}>
 
                             </div>
                             <div className={styles.calendar}>
                                 {/* CALENDAR */}
+                                <h1 className={styles.calendarTitle}> Proximos Eventos </h1>
                                 <Calendarcomponent />
                             </div>
                         </div>
