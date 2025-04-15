@@ -14,6 +14,8 @@ import Roles_Admin from "./pages/Management/Admin-M/G-Roles/roles-admin";
 import Users_Admin from "./pages/Management/Admin-M/Users-List/list-users-admin";
 import Notifications_Admin from "./pages/Notifications/Admin-N/notifications-admin";
 import Register_Doctor from "./pages/Management/Admin-M/Register_D/register-doctor";
+import Register_HealthCenter from "./pages/Management/Admin-M/Centers/register_center";
+import HealterCenter_list from "./pages/Management/Admin-M/Centers/center_list";
 
 
 
@@ -33,6 +35,8 @@ function App() {
         <Route path="user_list_admin" element={<Users_Admin />} />
         <Route path="notifications_admin" element={<Notifications_Admin />} />
         <Route path="register_doctor_admin" element={<Register_Doctor/>} />
+        <Route path="register_healthcenter" element={<Register_HealthCenter/>} />
+        <Route path="health_center_list" element={<HealterCenter_list/>} />
         <Route path="Us" element={<Us />} />
         <Route path="Support" element={<Support />} />
         <Route path="Support_D" element={<Support_D />} />

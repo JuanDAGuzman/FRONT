@@ -26,7 +26,8 @@ const Register_Doctor: React.FC = () => {
   return (
     <div className={styles.Register_Doctor}>
       <Navbar_G
-        profileText="Perfil"
+        profileText="Regresar"
+        profilePath="/dashboard_admin"
         profileImg="public/user.png"
         centerText="¡Bienvenido, Nombre!"
         menuItems={[{ label: "Configuraciones", path: "/" }]}

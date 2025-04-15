@@ -1,0 +1,109 @@
+/* Data_Table.module.css */
+@import "../../styles/global.css";
+
+/* Estilos para el contenedor de los botones */
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+/* Estilo general de los botones */
+.button {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Efecto de hover para los botones */
+.button:hover {
+  background: #dcdcdc;
+  transform: scale(1.1);
+}
+
+/* Tooltip para los botones */
+.button[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Estilo para los botones de acción */
+.button {
+  padding: 6px 10px;
+  background-color: #800000e6; /* mismo tono que los títulos */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Contenedor principal para centrar y dar espaciado */
+.tableContainer {
+  margin: 70px auto;
+  flex-direction: column;
+}
+
+/* Estilo para el título */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #800000e6; /* Rojo oscuro */
+  margin-bottom: 20px;
+  align-self: flex-start; /* Alinea el título a la izquierda */
+}
+
+/* Estilo para el botón de registro */
+.registerButton {
+  padding: 10px 20px;
+  background-color: #800000e6; /* Rojo oscuro */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  align-self: flex-start; /* Alinea el botón de registro a la izquierda */
+}
+
+/* Estilo para el campo de búsqueda */
+.searchInput {
+  width: 300px; /* Ajusta el tamaño si es necesario */
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Bordes más redondeados */
+  font-size: 14px;
+  align-self: flex-start; /* Alinea el campo de búsqueda a la izquierda */
+}
+
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #800000e6; /* Rojo oscuro */
+    margin-bottom: 20px;
+  }
+
+  .topBar {
+    margin-bottom: 20px; /* Agregado para separación entre el campo de búsqueda y la tabla */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Agregado para dar espacio entre el botón y el input */
+  }
