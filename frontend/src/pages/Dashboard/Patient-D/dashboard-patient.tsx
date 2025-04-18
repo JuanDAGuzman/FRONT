@@ -14,7 +14,7 @@ const Dpatient: React.FC = () => {
         <div className={styles.DashPatient}>
             <Navbar_G 
                 profileText='Perfil'
-                profileImg='public/user.png'
+                profileImg='/user.png'
                 centerText='¡Bienvenido, Nombre!'
                 menuItems={[{label: "Configuraciones", path: "/"}]}
                 onLogout={()  => navigate('/login')}
@@ -44,6 +44,25 @@ const Dpatient: React.FC = () => {
                     title="Notificaciones"
                     onClick={() => navigate('/login')}
                     />
+                </div>
+
+                <div className={styles.Section}>
+                    <h1 className={styles.Sectiontitle}>🧠 Autocuidado y prevención</h1>
+                    <p className={styles.SectionText}>Consejos e información importante para cuidar de tu salud.</p>
+
+                    <div>
+                        <img src="" alt="Infografía Pie Diabético" />
+                        <p>Señales de alerta en el pie diabético</p>
+                    </div>
+
+                    <div>
+                        <iframe 
+                        src="https://www.youtube.com/embed/Q5oM5B3G8MI"
+                        title="Video Autocuidado"
+                        allowFullScreen
+                        />
+                        <p>Video: Cómo identificar síntomas tempranos</p>
+                    </div>
                 </div>
 
                 <div className={styles.calendar}>
