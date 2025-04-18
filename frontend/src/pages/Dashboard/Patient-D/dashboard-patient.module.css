@@ -1,0 +1,56 @@
+@import "../../../styles/global.css";
+
+.DashPatient {
+    font-family: var(--font-primary);
+    padding: var(--padding-page);
+    margin: var(--margin-page);
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título general */
+.title {
+    margin-top: 120px;
+    font-size: var(--font-title);
+    color: var(--red-primary);
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr;  /* Sidebar más pequeño */
+    grid-template-rows: auto 1fr;  /* La segunda fila crece automáticamente */
+    align-items: start;
+    padding: 20px;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centra el título y el calendario */
+    gap: 20px;
+    position: absolute;
+    top: 15px; 
+    right: 80px; 
+    width: auto; 
+    z-index: 2; 
+}
+
+.calendarTitle {
+    margin-top: 150px;
+    font-size: var(--font-title);
+    color: var(--red-primary);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
