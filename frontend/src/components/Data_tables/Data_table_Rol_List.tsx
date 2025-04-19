@@ -2,8 +2,7 @@ import { useState } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import styles from './Data_Table.module.css'; // Asegúrate que tu CSS tenga clases para texto rojo y botones
-
+import styles from './Data_Table.module.css'; // Importa los estilos CSS
 
 type Usuario = {
   id: string;
@@ -84,30 +83,40 @@ const Table: React.FC = () => {
     },
   ];
 
+  const customStyles = {
+    headCells: {
+      style: {
+        fontWeight: 'bold',
+        color: 'rgba(128, 0, 0, 0.9)',
+        fontSize: '15px',
+        backgroundColor: '#f1f1f1',
+      },
+    },
+  };
+
   return (
     <div className={styles.tableContainer}>
-      <h2 className={styles.redTitle}>Lista de Usuarios</h2>
+      <h2 className={styles.title}>Lista de Roles</h2>
 
       <button
-        className={styles.redButton}
-        style={{ marginBottom: '10px' }}
+        className={styles.registerButton}
         onClick={() => navigate('/')}
       >
-        Registrar Usuario
+        Registrar Rol
       </button>
 
-      <div style={{ marginBottom: '10px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+      <div className={styles.topBar}>
         <input
           type="text"
           placeholder="Filtrar por ID"
           value={filtroID}
           onChange={(e) => setFiltroID(e.target.value)}
-          style={{ padding: '5px' }}
+          className={styles.searchInput}
         />
         <select
           value={filtroRol}
           onChange={(e) => setFiltroRol(e.target.value)}
-          style={{ padding: '5px' }}
+          className={styles.searchInput}
         >
           <option value="">Todos los roles</option>
           <option value="admin">Admin</option>
@@ -116,7 +125,7 @@ const Table: React.FC = () => {
         <select
           value={filtroEstado}
           onChange={(e) => setFiltroEstado(e.target.value)}
-          style={{ padding: '5px' }}
+          className={styles.searchInput}
         >
           <option value="">Todos los estados</option>
           <option value="activo">Activo</option>
@@ -129,6 +138,7 @@ const Table: React.FC = () => {
         data={filtrarUsuarios()}
         fixedHeader
         pagination
+        customStyles={customStyles}
       />
     </div>
   );
