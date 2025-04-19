@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home/home';
 import Login from './pages/Auth/Login/login' //Se importa el componente Login
 import TwoFactor from './pages/Auth/TwoFactor/twoFactor'
-import Doctor_D from './pages/Dashboard/Doctor_D/dashboard-doctor'
+import Patient_D from './pages/Dashboard/Patient-D/dashboard-patient'
+import Doctor_D from './pages/Dashboard/Doctor_D/dashboard_doctor'
 import Doctor_M_l from './pages/Management/Doctor_M/Patients-List/list-patients-doctor'
 import Doctor_M_R from './pages/Management/Doctor_M/Register_Patients/register-patients-doctor'
 import Us from "./pages/Us/Us";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="twoFactor" element={<TwoFactor />} />
+        <Route path="dashboard_patient" element={<Patient_D />} />
         <Route path="dashboard_doctor" element={<Doctor_D />} />
         <Route path="list_patients_doctor" element={<Doctor_M_l />} />
         <Route path="register_patients_doctor" element={<Doctor_M_R />} />

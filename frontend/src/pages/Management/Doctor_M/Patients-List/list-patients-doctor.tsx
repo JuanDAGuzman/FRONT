@@ -10,7 +10,7 @@ const List_Patients: React.FC = () => {
 
             <Navbar_G 
                 profileText='Regresar'
-                profilePath='/dashboard-doctor'
+                profilePath='/dashboard_doctor'
                 profileImg='public/user.png'
                 centerText='Nombre, Aca podras ver tus pacientes'
                 menuItems={[]}
@@ -23,7 +23,7 @@ const List_Patients: React.FC = () => {
 
             {/* CONTENDOR */}
             <div className={styles.container}>
-                <h1 className={styles.title}>Lista de Pacientes</h1>
+                <h1 className={styles.title}>Lista de pacientes</h1>
                 <div className={styles.btn}>
                     <button type='submit' className={styles.button} onClick={() => navigate("/register_patients_doctor")}> Registro de Pacientes </button>
                 </div>

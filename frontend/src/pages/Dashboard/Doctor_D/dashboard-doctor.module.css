@@ -13,7 +13,7 @@
 
 .title {
     margin-top: 120px;
-    font-size: 2rem;
+    font-size: var(--font-title);
     color: var(--red-primary);
     font-weight: bold;
     display: flex;
@@ -33,8 +33,7 @@
 
 .important {
     grid-column: 2;
-    grid-row: 1 / span 2; /* Ocupará desde la primera hasta la última fila */
-    display: flex;
+    grid-row: 1 / span 2; /* desde la primera hasta la última fila */
     display: flex;
     flex-direction: column;  /* Apila los elementos verticalmente */
     align-items: center;     /* Centra horizontalmente */
@@ -47,6 +46,7 @@
     margin-right: 30px;
     position: relative;
     background: rgb(224, 224, 224); 
+    overflow: hidden;
 }
 
 .important::before { 
@@ -56,41 +56,87 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%); /* Centra la imagen completamente */
-    width: 100%; /* Ajusta el tamaño según necesites */
+    transform: translate(-50%, -40%); /* Centrar la imagen */
+    width: 100%; /* Ajusta el tamaño */
     height: 100%;
     opacity: 0.2;
     z-index: 0;
 }
 
-.subtitle {
-    font-size: var(--font-subtitle);
+.importantTitle{
+    margin-top: -20px;
+    font-size: var(--font-title);
     color: var(--red-primary);
     font-weight: bold;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: -10px;  /* Ajusta según sea necesario */
+}
+
+.content-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centra el título y el calendario */
+    gap: 20px;
+    position: absolute;
+    top: 15px; 
+    right: 30px; 
+    width: auto; 
+    z-index: 2; 
+}
+
+.calendarTitle {
+    margin-top: 80px;
+    font-size: var(--font-title);
+    color: var(--red-primary);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.cards {
+    width: 60%;
+    margin-left: 20px;
+    margin-top: 60px; 
+}
+
+.subtitle {
+    font-size: var(--font-title);
+    color: var(--red-primary);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5px;  
 }
 
 .sidebar {
-    margin-top: 70px;
+    margin-top: 150px;
     grid-column: 1;
     grid-row: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: rgb(224, 224, 224);
-    padding: 12px;
+    padding: 18px;
     gap: 24px;
     border-radius: 16px;
-    width: 168px;
+    width: 250px;
     align-self: start;
 }
 
 .button {
     width: 90%;
-    padding: 10px;
+    padding: 16px;
     background: #e71010;
     color: var(--white);
     font-size: var(--font-text);
@@ -100,7 +146,6 @@
     cursor: pointer;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-    
 }
 
 .button:hover {
