@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./roles-admin.module.css";
 import { useNavigate } from "react-router-dom";
 import Navbar_G from "../../../../components/NavBars/Navbar_Globla";
-import Table from "../../../../components/Data_tables/Data_Table_Rol_List"
+import Table from "../../../../components/Data_tables/Data_table_Rol_List"
 
 const Manage_roles: React.FC = () => {
     const navigate = useNavigate();
