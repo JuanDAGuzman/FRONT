@@ -103,10 +103,13 @@
     text-align: center;
 }
 
-.cards {
-    width: 60%;
-    margin-left: 20px;
-    margin-top: 60px; 
+/* Tarjetas de la columna izquierda (sin cambios) */
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative; /* ← ¡esto lo activa! */
+    left: 20px;
+    margin-top: 10px;
 }
 
 .subtitle {

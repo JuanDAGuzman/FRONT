@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home/home';
 import Login from './pages/Auth/Login/login' //Se importa el componente Login
 import TwoFactor from './pages/Auth/TwoFactor/twoFactor'
+import Profile_D from './pages/Profiles/Profile_Doctor/profile_D'
 import Patient_D from './pages/Dashboard/Patient-D/dashboard-patient'
 import Doctor_D from './pages/Dashboard/Doctor_D/dashboard_doctor'
 import Doctor_M_l from './pages/Management/Doctor_M/Patients-List/list-patients-doctor'
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="twoFactor" element={<TwoFactor />} />
+        <Route path="profile_D" element={<Profile_D/>}/>
         <Route path="dashboard_patient" element={<Patient_D />} />
         <Route path="dashboard_doctor" element={<Doctor_D />} />
         <Route path="list_patients_doctor" element={<Doctor_M_l />} />
