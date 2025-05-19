@@ -3,6 +3,8 @@ import styles from "./dashboard-doctor.module.css" // Importar estilos de Login 
 import { useNavigate } from "react-router-dom";
 import Navbar_G from '../../../components/NavBars/Navbar_Globla';
 import Calendarcomponent from '../../../components/Calendar/Calendar';
+import { FaVideo, FaCalendarAlt, FaBell, FaUsers } from "react-icons/fa";
+import ActionCard from "../../../components/Cards/action_cards";
 
 const Ddoctor: React.FC = () => {
     const navigate = useNavigate()
@@ -11,6 +13,7 @@ const Ddoctor: React.FC = () => {
         <div className={styles.DashDoctor}>
             <Navbar_G 
                 profileText='Perfil'
+                profilePath='/profile_D'
                 profileImg='public/user.png'
                 centerText='¡Bienvenido, Nombre!'
                 menuItems={[{label: "Configuraciones", path: "/"}]}
@@ -34,10 +37,29 @@ const Ddoctor: React.FC = () => {
                         </div>
                     </div>
                 
-                    <div className={styles.sidebar}>
-                        <h1 className={styles.subtitle}> Menú </h1>
-                        <button type='submit' className={styles.button} onClick={() => navigate("/list_patients_doctor")}> Pacientes </button>
-                        <button type='submit' className={styles.button} onClick={() => navigate("/")}> Notificaciones </button>
+                    <div className={styles.container}>
+                        <div className={styles.cardsContainer}>
+                            <ActionCard 
+                            icon={<FaUsers />}
+                            title="Pacientes"
+                            onClick={() => navigate('/list_patients_doctor')}
+                            />
+                            <ActionCard 
+                            icon={<FaCalendarAlt />}
+                            title="Agendar Cita"
+                            onClick={() => navigate('/login')}
+                            />
+                            <ActionCard 
+                            icon={<FaVideo />}
+                            title="VideoConsulta"
+                            onClick={() => navigate('/login')}
+                            />
+                            <ActionCard 
+                            icon={<FaBell />}
+                            title="Notificaciones"
+                            onClick={() => navigate('/login')}
+                            />
+                        </div>
                     </div>
             </div>
         </div>
