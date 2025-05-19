@@ -11,7 +11,7 @@ type Usuario = {
   estado: string;
 };
 
-const Table: React.FC = () => {
+const RoleTable: React.FC = () => {
   const navigate = useNavigate();
 
   const datosIniciales: Usuario[] = [
@@ -144,4 +144,4 @@ const Table: React.FC = () => {
   );
 };
 
-export default Table;
+export default RoleTable;

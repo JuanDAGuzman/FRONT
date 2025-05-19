@@ -13,7 +13,7 @@ type CentroSalud = {
   estadoOperacion: string;
 };
 
-const Table: React.FC = () => {
+const HealthTable: React.FC = () => {
   const navigate = useNavigate(); // Inicializa el hook navigate
 
   const handleRegisterClick = () => {
@@ -139,4 +139,4 @@ const Table: React.FC = () => {
   );
 };
 
-export default Table;
+export default HealthTable;
