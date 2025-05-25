@@ -3,35 +3,47 @@ import styles from "./dashboard-admin.module.css";
 import { Link } from "react-router-dom";
 import Navbar_G from '../../../components/NavBars/Navbar_Globla';
 import { useNavigate } from "react-router-dom";
+import ActionCard from "../../../components/Cards/action_cards";
+import { FaUsers, FaUserShield, FaBell } from "react-icons/fa";  // Cambié los íconos aquí
 
 const DashAdmin: React.FC = () => {
     const navigate = useNavigate();
     return (
         <div className={styles.DashAdmin}>
-            <Navbar_G 
+            <Navbar_G
                 profileText='Perfil'
                 profileImg='public/user.png'
                 centerText='¡Bienvenido, Nombre!'
-                menuItems={[{label: "Configuraciones", path: "/"}]}
+                menuItems={[{ label: "Configuraciones", path: "/" }]}
                 onLogout={() => { navigate('/login'); }}
-
             />
 
             <h1 className={styles.title}>Aca podrás ver todo lo que necesitas</h1>
 
             <div className={styles.container}>
-                <div className={styles.sidebar}>
-                    <h1 className={styles.subtitle}>Menú</h1>
-                    <Link to="/user_list_admin" className={styles.button}>Usuarios</Link>
-                    <Link to="/manage_roles" className={styles.button}>Roles</Link>
-                    <Link to="/notifications_admin" className={styles.button}>Notificaciones</Link>
+                <div className={styles.cardsContainer}>
+                    <ActionCard
+                        icon={<FaUsers />}
+                        title="Usuarios"
+                        onClick={() => navigate('/user_list_admin')}
+                    />
+                    <ActionCard
+                        icon={<FaUserShield />}
+                        title="Roles"
+                        onClick={() => navigate('/manage_roles')}
+                    />
+                    <ActionCard
+                        icon={<FaBell />}
+                        title="Notificaciones"
+                        onClick={() => navigate('/notifications_admin')}
+                    />
                 </div>
 
                 <div className={styles.statsPanel}>
-                    <h2 className={styles.statsTitle}>📊 Panel de Estadísticas Generales</h2>
+                    
 
                     <div className={styles.statsGrid}>
-                        {[
+                        {[ 
                             { title: "Total de Pacientes Registrados", value: "1,250", to: "/" },
                             { title: "Pacientes Activos", value: "850", to: "/" },
                             { title: "Pacientes Inactivos", value: "400", to: "/" },

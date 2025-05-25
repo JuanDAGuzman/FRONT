@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+
 import styles from './Data_Table.module.css'; // Importa los estilos CSS
 
 type Usuario = {
@@ -12,7 +12,6 @@ type Usuario = {
 };
 
 const RoleTable: React.FC = () => {
-  const navigate = useNavigate();
 
   const datosIniciales: Usuario[] = [
     { id: '1001', nombre: 'Juan Pérez', rol: 'admin', estado: 'activo' },
@@ -98,12 +97,6 @@ const RoleTable: React.FC = () => {
     <div className={styles.tableContainer}>
       <h2 className={styles.title}>Lista de Roles</h2>
 
-      <button
-        className={styles.registerButton}
-        onClick={() => navigate('/')}
-      >
-        Registrar Rol
-      </button>
 
       <div className={styles.topBar}>
         <input

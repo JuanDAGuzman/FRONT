@@ -39,7 +39,7 @@ const Table: React.FC = () => {
   const [filtroNombre, setFiltroNombre] = useState(''); // Estado para filtrar por nombre
 
   const handleRegistrarUsuario = () => {
-    navigate('/registrar-usuario'); // Define tu ruta para registrar usuarios
+    navigate('/register_doctor_admin'); // Define tu ruta para registrar usuarios
   };
 
   const handleVerPacientes = () => {

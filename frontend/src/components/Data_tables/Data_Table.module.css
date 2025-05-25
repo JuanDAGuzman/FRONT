@@ -15,20 +15,15 @@
   align-self: flex-start;
 }
 
-/* Barra superior: botón registrar y campo de búsqueda */
+/* Barra superior: botón registrar y campos de búsqueda */
 .topBar {
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Estilos para la barra de filtros horizontal */
-.topBar {
-  margin-bottom: 20px;
-  display: flex; /* Disposición horizontal */
-  gap: 15px; /* Espacio entre los elementos de filtro */
-  align-items: center; /* Alineación vertical de los elementos */
+  display: flex; /* Makes it a flex container */
+  flex-wrap: wrap; /* Allows items to wrap to the next line if space is limited */
+  gap: 15px; /* Space between the filter elements */
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content: flex-start; /* Aligns items to the start (left) of the container */
+  /* Remove any conflicting align-self if it was applied to the topBar itself */
 }
 
 /* Estilo para el botón de registro */
@@ -40,7 +35,8 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-self: flex-start;
+  /* If this button is part of the .topBar, align-self: flex-start is not needed here
+     as justify-content on .topBar will handle its horizontal position. */
 }
 
 /* Estilo para los campos de búsqueda */
@@ -50,8 +46,10 @@
   border-radius: 8px;
   font-size: 14px;
   width: auto;
-  flex-grow: 1;
-  max-width: 200px;
+  /* flex-grow: 1; - You can keep this if you want them to grow and fill available space,
+     but if you want them to stay close together, remove or adjust this.
+     max-width: 200px; - This is good for controlling maximum width. */
+  max-width: 200px; /* Keep a max-width to prevent them from becoming too wide */
 }
 
 .searchInput select {

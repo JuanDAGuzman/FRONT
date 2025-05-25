@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+
 import styles from './Data_Table.module.css'; // Reutilizamos tus estilos CSS
 
 type Paciente = {
@@ -14,7 +14,7 @@ type Paciente = {
 };
 
 const Table: React.FC = () => {
-  const navigate = useNavigate();
+  
 
   const datosInicialesPacientes: Paciente[] = [
     { cedula: '1234567890', nombre: 'Ana López', ciudad: 'Bogotá', centroMedico: 'Clínica del Country', estado: 'activo', diagnostico: 'Gripe' },
@@ -114,13 +114,6 @@ const Table: React.FC = () => {
   return (
     <div className={styles.tableContainer}>
       <h2 className={styles.title}>Lista de Pacientes</h2>
-
-      <button
-        className={styles.registerButton}
-        onClick={() => navigate('/registrar-paciente')} // Ajusta la ruta según tu necesidad
-      >
-        Registrar Paciente
-      </button>
 
       <div className={styles.topBar}>
         <input
