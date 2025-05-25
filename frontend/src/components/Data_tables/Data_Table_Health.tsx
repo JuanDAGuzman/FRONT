@@ -2,7 +2,7 @@ import { useState } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './Data_Table.module.css';
-import { useNavigate } from 'react-router-dom'; // Asegúrate de importarlo
+import { useNavigate } from 'react-router-dom';
 
 type CentroSalud = {
   nombre: string;
@@ -13,7 +13,7 @@ type CentroSalud = {
   estadoOperacion: string;
 };
 
-const Table: React.FC = () => {
+const HealthTable: React.FC = () => {
   const navigate = useNavigate();
 
   const handleRegisterClick = () => {
@@ -110,7 +110,7 @@ const Table: React.FC = () => {
       <div className={styles.topBar}>
         <button 
           className={styles.registerButton} 
-          onClick={handleRegisterClick} // Llama a la función al hacer clic
+          onClick={handleRegisterClick}
         >
           Registrar Centro de Salud
         </button>
@@ -139,4 +139,4 @@ const Table: React.FC = () => {
   );
 };
 
-export default Table;
+export default HealthTable;

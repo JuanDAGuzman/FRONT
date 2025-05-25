@@ -1,30 +1,93 @@
-/* Data_Table.module.css */
 @import "../../styles/global.css";
 
-/* Estilos para el contenedor de los botones */
+/* Contenedor principal para centrar y dar espaciado */
+.tableContainer {
+  margin: 70px auto;
+  flex-direction: column;
+}
+
+/* Estilo para el título */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #800000e6; /* Rojo oscuro */
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+/* Barra superior: botón registrar y campo de búsqueda */
+.topBar {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilos para la barra de filtros horizontal */
+.topBar {
+  margin-bottom: 20px;
+  display: flex; /* Disposición horizontal */
+  gap: 15px; /* Espacio entre los elementos de filtro */
+  align-items: center; /* Alineación vertical de los elementos */
+}
+
+/* Estilo para el botón de registro */
+.registerButton {
+  padding: 10px 20px;
+  background-color: #800000e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+/* Estilo para los campos de búsqueda */
+.searchInput {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: auto;
+  flex-grow: 1;
+  max-width: 200px;
+}
+
+.searchInput select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Contenedor para los botones de acción */
 .buttonsContainer {
   display: flex;
   gap: 10px;
+  position: relative; /* Necesario para el tooltip */
 }
 
 /* Estilo general de los botones */
 .button {
-  background: #f0f0f0;
+  background: #800000e6;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 6px 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  color: white;
   text-align: center;
 }
 
-/* Efecto de hover para los botones */
+/* Efecto hover */
 .button:hover {
-  background: #dcdcdc;
+  background: #a83232;
   transform: scale(1.1);
 }
 
@@ -41,70 +104,5 @@
   border-radius: 4px;
   font-size: 12px;
   white-space: nowrap;
-}
-
-/* Estilo para los botones de acción (en la tabla) */
-.button {
-  padding: 6px 10px;
-  background-color: #800000e6; /* mismo tono que los títulos */
-  color: white;
-  border: none;
-  border-radius: 8px; /* Bordes más redondeados */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Contenedor principal para centrar y dar espaciado */
-.tableContainer {
-  margin: 70px auto;
-  flex-direction: column;
-}
-
-/* Estilo para el título */
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #800000e6; /* Rojo oscuro */
-  margin-bottom: 20px;
-  align-self: flex-start; /* Alinea el título a la izquierda */
-}
-
-/* Estilo para el botón de registro */
-.registerButton {
-  padding: 10px 20px;
-  background-color: #800000e6; /* Rojo oscuro */
-  color: white;
-  border: none;
-  border-radius: 8px; /* Bordes más redondeados */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-  align-self: flex-start; /* Alinea el botón de registro a la izquierda */
-}
-
-/* Estilos para la barra de filtros horizontal */
-.topBar {
-  margin-bottom: 20px;
-  display: flex; /* Disposición horizontal */
-  gap: 15px; /* Espacio entre los elementos de filtro */
-  align-items: center; /* Alineación vertical de los elementos */
-}
-
-/* Estilo para los campos de búsqueda (incluyendo selects) */
-.searchInput {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  width: auto; /* Ajuste automático del ancho */
-  flex-grow: 1; /* Permite que los campos crezcan */
-  max-width: 200px; /* Ancho máximo opcional */
-}
-
-.searchInput select {
-  width: 100%; /* Asegura que el select ocupe el ancho de su contenedor */
-  padding: 8px; /* Asegura que el padding se aplique también al select */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
+  z-index: 10;
 }
