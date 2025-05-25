@@ -14,10 +14,10 @@ type CentroSalud = {
 };
 
 const Table: React.FC = () => {
-  const navigate = useNavigate(); // Inicializa el hook navigate
+  const navigate = useNavigate();
 
   const handleRegisterClick = () => {
-    navigate('/'); // Redirige a la raíz "/"
+    navigate('/register_healthcenter'); 
   };
 
   const originalData: CentroSalud[] = [

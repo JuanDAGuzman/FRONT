@@ -17,6 +17,7 @@ import Notifications_Admin from "./pages/Notifications/Admin-N/notifications-adm
 import Register_Doctor from "./pages/Management/Admin-M/Register_D/register-doctor";
 import Register_HealthCenter from "./pages/Management/Admin-M/Centers/register_center";
 import HealterCenter_list from "./pages/Management/Admin-M/Centers/center_list";
+import List_patients_admin from "./pages/Management/Admin-M/Users-List/list-user-admin-patient";
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="register_doctor_admin" element={<Register_Doctor/>} />
         <Route path="register_healthcenter" element={<Register_HealthCenter/>} />
         <Route path="health_center_list" element={<HealterCenter_list/>} />
+        <Route path="patient_list_admin" element={<List_patients_admin/>} />
         <Route path="Us" element={<Us />} />
         <Route path="Support" element={<Support />} />
         <Route path="Support_D" element={<Support_D />} />

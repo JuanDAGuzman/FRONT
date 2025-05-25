@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./list-users-admin.module.css";
 import { useNavigate } from "react-router-dom";
 import Navbar_G from '../../../../components/NavBars/Navbar_Globla';
-import Table from "../../../../components/Data_tables/Data_table_User_list";
+import Table from "../../../../components/Data_tables/Data_table_User_list_patient";
 
-const Users_Admin: React.FC = () => {
+const List_patients_admin: React.FC = () => {
     const navigate = useNavigate();
 
     return (
@@ -17,6 +17,7 @@ const Users_Admin: React.FC = () => {
                 menuItems={[{ label: "Configuraciones", path: "/" }]}
                 onLogout={() => navigate('/login')}
             />
+
             <div style={{ padding: '20px' }}>
                 <Table />
             </div>
@@ -24,4 +25,4 @@ const Users_Admin: React.FC = () => {
     );
 };
 
-export default Users_Admin;
+export default List_patients_admin;

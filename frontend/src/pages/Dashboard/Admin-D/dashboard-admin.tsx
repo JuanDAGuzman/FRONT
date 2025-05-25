@@ -36,7 +36,7 @@ const DashAdmin: React.FC = () => {
                             { title: "Pacientes Activos", value: "850", to: "/" },
                             { title: "Pacientes Inactivos", value: "400", to: "/" },
                             { title: "Médicos Registrados", value: "75", to: "/" },
-                            { title: "Centros de Salud Afiliados", value: "12", to: "/" },
+                            { title: "Centros de Salud Afiliados", value: "12", to: "/health_center_list" },
                             { title: "Alertas de Alto Riesgo", value: "5", to: "/notifications_admin" },
                         ].map((stat, idx) => (
                             <Link to={stat.to} key={idx} className={`${styles.statCard}`}>

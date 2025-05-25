@@ -43,7 +43,7 @@
   white-space: nowrap;
 }
 
-/* Estilo para los botones de acción */
+/* Estilo para los botones de acción (en la tabla) */
 .button {
   padding: 6px 10px;
   background-color: #800000e6; /* mismo tono que los títulos */
@@ -82,28 +82,29 @@
   align-self: flex-start; /* Alinea el botón de registro a la izquierda */
 }
 
-/* Estilo para el campo de búsqueda */
-.searchInput {
-  width: 300px; /* Ajusta el tamaño si es necesario */
-  padding: 8px;
+/* Estilos para la barra de filtros horizontal */
+.topBar {
   margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px; /* Bordes más redondeados */
-  font-size: 14px;
-  align-self: flex-start; /* Alinea el campo de búsqueda a la izquierda */
+  display: flex; /* Disposición horizontal */
+  gap: 15px; /* Espacio entre los elementos de filtro */
+  align-items: center; /* Alineación vertical de los elementos */
 }
 
+/* Estilo para los campos de búsqueda (incluyendo selects) */
+.searchInput {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: auto; /* Ajuste automático del ancho */
+  flex-grow: 1; /* Permite que los campos crezcan */
+  max-width: 200px; /* Ancho máximo opcional */
+}
 
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #800000e6; /* Rojo oscuro */
-    margin-bottom: 20px;
-  }
-
-  .topBar {
-    margin-bottom: 20px; /* Agregado para separación entre el campo de búsqueda y la tabla */
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Agregado para dar espacio entre el botón y el input */
-  }
+.searchInput select {
+  width: 100%; /* Asegura que el select ocupe el ancho de su contenedor */
+  padding: 8px; /* Asegura que el padding se aplique también al select */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
