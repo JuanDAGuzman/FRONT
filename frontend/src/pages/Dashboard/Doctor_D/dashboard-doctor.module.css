@@ -109,7 +109,7 @@
     flex-wrap: wrap;
     position: relative; /* ← ¡esto lo activa! */
     left: 20px;
-    margin-top: 10px;
+    margin-top: -30px;
 }
 
 .subtitle {
