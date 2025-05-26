@@ -2,6 +2,7 @@
     /* ESPACIADOS */
     --margin-page: 0;
     --padding-page: 0;
+    box-sizing: border-box;
 
     /* TIPOGRAFIA */
     --font-primary: "Quicksand", serif;

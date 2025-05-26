@@ -1,25 +1,123 @@
 @import "../../../../styles/global.css";
 
-.List_Patients_Doc {
+.agendarCita_Doc {
     font-family: var(--font-primary);
     padding: var(--padding-page);
     margin: var(--margin-page);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;             /* Ocupa todo el ancho disponible */
     height: 100vh;
+    box-sizing: border-box; /* padding incluido dentro del ancho */
+    overflow-x: hidden;   /* evita scroll horizontal */
 }
 
 .logo {
     position: absolute;
-    top: 120px; /* ajusta según la altura de tu navbar */
-    right: -55px;
+    top: 120px; /* ajusta según navbar */
+    right: 0;   /* evita overflow */
     width: 300px;
     height: auto;
     object-fit: contain;
     z-index: 1;
-    opacity: 0.5; /* Opcional para estilo visual */
+    opacity: 0.5;
 }
 
+.container {
+     width: 100%;
+    height: 100vh;
+    align-items: start;
+    padding: 20px;
+    gap: 10px;
+}
 
+.form,
+.historial {
+    margin-top: 85px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    
+}
+
+.form h2,
+.historial h2 {
+    color: var(--red-primary);
+    margin-bottom: 15px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.group label {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--border);
+}
+
+.group input,
+.group select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--red-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--red-secundary);
+    transform: scale(1.05);
+}
+
+.gridCitas {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    font-size: 14px;
+    color: var(--black);
+    font-weight: 500;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.acciones {
+    text-align: center;
+}
+
+.smallBtn {
+    background-color: var(--red-secundary);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.smallBtn:hover {
+    background-color: var(--red-primary);
+}
