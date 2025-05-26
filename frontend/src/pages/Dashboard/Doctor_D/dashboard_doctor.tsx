@@ -45,7 +45,7 @@ const Ddoctor: React.FC = () => {
             <ActionCard
               icon={<FaCalendarAlt />}
               title="Agendar Cita"
-              onClick={() => navigate('/login')}
+              onClick={() => navigate('/agendar_cita_Doc')}
             />
             <ActionCard
               icon={<FaVideo />}
