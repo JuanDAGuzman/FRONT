@@ -1,7 +1,7 @@
 import React from "react";
 import ContactHero from "../Contact/ContactHero/ContactHero";
-import Navbar from "./../Home/NavBar/Navbar";
-import Footer from "./../Home/Footer/Footer";
+import Navbar from "../../components/NavBar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const Contact: React.FC = () => {
   return (

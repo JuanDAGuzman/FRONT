@@ -31,19 +31,17 @@ const Navbar_G: React.FC<NavbarProps> = ({
 }) => {
     const navigate = useNavigate()
 
-    //Funcion para manejar redirigimiento
 
     const handleLogout = () => {
         if (onLogout) {
-            onLogout() //Permite la redirección de la vista 
+            onLogout() 
         } else {
-            navigate(logoutPath) //Si no hay nada por defecto a login
+            navigate(logoutPath) 
         }
     }
 
     return (
         <nav className={styles.navbar}>
-            {/* Lado Izquierdo */}
             <div className={styles.navbarleft}>
                  <ul>
                      <li className={styles.profile}>
@@ -57,12 +55,10 @@ const Navbar_G: React.FC<NavbarProps> = ({
                  </ul>
             </div>
 
-            {/* Centro */}
             <div className={styles.navbarcenter}>
                 {centerText}
             </div>
 
-            {/* Lado Derecho */}
             <div className={styles.navbarright}>
                 <ul>
                     {menuItems.map(( item, index ) => (
@@ -76,7 +72,7 @@ const Navbar_G: React.FC<NavbarProps> = ({
                     <button
                         type='button'
                         className={styles.salir}
-                        onClick={handleLogout} //Ejecutar función de redirección
+                        onClick={handleLogout} 
                     >
                         {logoutText}
                     </button>

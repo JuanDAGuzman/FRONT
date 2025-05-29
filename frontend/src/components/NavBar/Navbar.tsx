@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const navbarlinks = [
   {
     id: 1,
@@ -118,7 +119,6 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
       </div>
-      {/* MENU MOBILE */}
 
       <div
         className={`md:hidden absolute w-full bg-[#B71C1C] transition-all duration-300 ${

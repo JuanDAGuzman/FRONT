@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/home';
-import Login from './pages/Auth/Login/login'; //Se importa el componente Login
+import Login from './pages/Auth/Login';
+import SignIn from './pages/Auth/SignIn';
 import TwoFactor from './pages/Auth/TwoFactor/twoFactor';
 import Profile_D from './pages/Profiles/Profile_Doctor/profile_D';
 import Patient_D from './pages/Dashboard/Patient-D/dashboard-patient';
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="twoFactor" element={<TwoFactor />} />
         <Route path="profile_D" element={<Profile_D />} />
         <Route path="dashboard_patient" element={<Patient_D />} />

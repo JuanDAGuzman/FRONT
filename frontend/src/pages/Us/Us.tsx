@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../Home/NavBar/Navbar";
-import Footer from "../Home/Footer/Footer";
+import Navbar from "../../components/NavBar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import HeroUs from "../Us/Hero/HeroUs";
 
 
