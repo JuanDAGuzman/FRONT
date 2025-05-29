@@ -1,7 +1,7 @@
 import React from "react";
 import HeroSupp from "./HeroSupp.tsx/HeroSupp";
-import Navbar from "./../Home/NavBar/Navbar";
-import Footer from "./../Home/Footer/Footer";
+import Navbar from "../../components/NavBar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const Support: React.FC = () => {
   return (
