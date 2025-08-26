@@ -1,67 +1,42 @@
-import React from 'react';
-import styles from './dashboard-doctor.module.css'; // Importar estilos de Login modules
-import { useNavigate } from 'react-router-dom';
-import Navbar_G from '../../../components/NavBars/Navbar_Globla';
-import Calendarcomponent from '../../../components/Calendar/Calendar';
-import { FaVideo, FaCalendarAlt, FaBell, FaUsers } from 'react-icons/fa';
-import ActionCard from '../../../components/Cards/action_cards';
+import React from "react";
+import DoctorNavbar from "../../../components/NavBar/DoctorNavbar";
+import Footer from "../../../components/Footer/Footer";
+import TodayAppointments from "./TodayAppointments";
+import AppointmentRequestsPanel from "./AppointmentRequestsPanel";
 
-const Ddoctor: React.FC = () => {
-  const navigate = useNavigate();
+const DoctorDashboard: React.FC = () => {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  if (!user?.id) {
+    window.location.href = "/login";
+    return null;
+  }
+
+
+  const doctorId = user.doctorId || user.id;
 
   return (
-    <div className={styles.DashDoctor}>
-      <Navbar_G
-        profileText="Perfil"
-        profilePath="/profile_D"
-        profileImg="public/user.png"
-        centerText="¡Bienvenido, Nombre!"
-        menuItems={[{ label: 'Configuraciones', path: '/' }]}
-        onLogout={() => navigate('/login')}
-      />
+    <div className="flex flex-col min-h-screen bg-gray-50">
+      <DoctorNavbar user={user} />
+      <main className="container mx-auto px-4 py-8 flex-1 pt-24">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">
+          ¡Bienvenido Dr(a). {user.name || "Doctor"}!
+        </h1>
+        <p className="text-gray-600 mb-8">
+          Gestiona tus pacientes, revisa citas del día y solicitudes entrantes.
+        </p>
 
-      <h1 className={styles.title}> Aca podras ver todo lo que necesitas </h1>
-
-      <div className={styles.container}>
-        <div className={styles.important}>
-          <h1 className={styles.importantTitle}> Novedades Importantes </h1>
-          <div className={styles.contentContainer}>
-            <div className={styles.cards}></div>
-            <div className={styles.calendar}>
-              {/* CALENDAR */}
-              <h1 className={styles.calendarTitle}> Proximos Eventos </h1>
-              <Calendarcomponent />
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <TodayAppointments doctorId={doctorId} />
+          </div>
+          <div className="lg:col-span-1">
+            <AppointmentRequestsPanel />
           </div>
         </div>
-
-        <div className={styles.container}>
-          <div className={styles.cardsContainer}>
-            <ActionCard
-              icon={<FaUsers />}
-              title="Pacientes"
-              onClick={() => navigate('/list_patients_doctor')}
-            />
-            <ActionCard
-              icon={<FaCalendarAlt />}
-              title="Agendar Cita"
-              onClick={() => navigate('/agendar_cita_Doc')}
-            />
-            <ActionCard
-              icon={<FaVideo />}
-              title="VideoConsulta"
-              onClick={() => navigate('/login')}
-            />
-            <ActionCard
-              icon={<FaBell />}
-              title="Notificaciones"
-              onClick={() => navigate('/login')}
-            />
-          </div>
-        </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 };
 
-export default Ddoctor;
+export default DoctorDashboard;

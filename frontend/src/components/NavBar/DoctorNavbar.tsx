@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { User, Settings, LogOut } from "lucide-react";
 
-interface PatientNavbarProps {
+interface DoctorNavbarProps {
   user: {
     name: string;
     role: string;
@@ -10,19 +10,20 @@ interface PatientNavbarProps {
 }
 
 const navbarlinks = [
-  { id: 1, tittle: "Dashboard", link: "/dashboard_patient" },
-  { id: 2, tittle: "Mi Perfil", link: "/profile_patient" },
-  { id: 3, tittle: "Soporte", link: "/Support" },
+  { id: 1, tittle: "Dashboard", link: "/dashboard_doctor" },
+  { id: 2, tittle: "Mis Pacientes", link: "/doctor_patients" },
+  { id: 3, tittle: "Citas Médicas", link: "/doctor_appointments" },
+  { id: 4, tittle: "Soporte", link: "/support" },
 ];
 
-const PatientNavbar: React.FC<PatientNavbarProps> = ({ user }) => {
+const DoctorNavbar: React.FC<DoctorNavbarProps> = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleProfile = () => setIsProfileOpen((prev) => !prev);
 
-  const initial = user?.name ? user.name[0].toUpperCase() : "U";
+  const initial = user?.name ? user.name[0].toUpperCase() : "D";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#B71C1C] shadow-lg transition-all duration-300">
@@ -71,7 +72,7 @@ const PatientNavbar: React.FC<PatientNavbarProps> = ({ user }) => {
             {isProfileOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
                 <a
-                  href="/profile_patient"
+                  href="/profile_doctor"
                   className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   <User className="w-4 h-4 mr-3" />
@@ -147,13 +148,13 @@ const PatientNavbar: React.FC<PatientNavbarProps> = ({ user }) => {
               {initial}
             </div>
             <div>
-              <p className="text-white font-medium">{user?.name || "Nombre"}</p>
-              <p className="text-red-200 text-sm">{user?.role || "Paciente"}</p>
+              <p className="text-white font-medium">{user?.name || "Doctor"}</p>
+              <p className="text-red-200 text-sm">{user?.role || "Doctor"}</p>
             </div>
           </div>
           <div className="space-y-1">
             <a
-              href="/profile_patient"
+              href="/profile_doctor"
               className="block text-white hover:text-sky-300 text-sm py-1"
             >
               Mi Perfil
@@ -177,4 +178,4 @@ const PatientNavbar: React.FC<PatientNavbarProps> = ({ user }) => {
   );
 };
 
-export default PatientNavbar;
+export default DoctorNavbar;

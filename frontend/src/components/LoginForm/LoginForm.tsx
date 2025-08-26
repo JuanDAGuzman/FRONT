@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, User, Lock, LogIn, ScanFace } from "lucide-react";
 import Logo from "../../assets/logo2.png";
-
 import { useNavigate } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
@@ -12,6 +11,7 @@ const LoginForm: React.FC = () => {
     password: "",
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -46,13 +46,52 @@ const LoginForm: React.FC = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Datos de login:", formData);
-      alert("¡Login exitoso! (Demo)");
+      setLoading(true);
+      try {
+        const res = await fetch("http://localhost:4000/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.token) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+
+          if (data.user.role === "doctor") {
+            navigate("/dashboard_doctor");
+          } else if (data.user.role === "admin") {
+            navigate("/dashboard_admin");
+          } else if (data.user.role === "patient") {
+            navigate("/dashboard_patient");
+          } else {
+            navigate("/");
+          }
+        } else {
+          navigate("/");
+          setErrors((prev) => ({
+            ...prev,
+            general: data.message || "Correo o contraseña incorrectos",
+          }));
+        }
+      } catch (error) {
+        setErrors((prev) => ({
+          ...prev,
+          general: "Error de conexión con el servidor",
+        }));
+      } finally {
+        setLoading(false);
+      }
     } else {
       setErrors(newErrors);
     }
@@ -66,7 +105,6 @@ const LoginForm: React.FC = () => {
             <div className="flex justify-center md:justify-start">
               <img src={Logo} alt="Logo UMB" className="object-contain" />
             </div>
-
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-700">
               <h4 className="text-xl font-semibold text-gray-800 mb-3">
                 Sistema de Gestión de Pacientes
@@ -77,7 +115,6 @@ const LoginForm: React.FC = () => {
                 profesionales de la salud.
               </p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-700 rounded-full"></div>
@@ -97,7 +134,6 @@ const LoginForm: React.FC = () => {
               </div>
             </div>
           </div>
-
           <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-100 max-w-md mx-auto md:max-w-none">
             <div className="mb-4">
               <button
@@ -118,8 +154,11 @@ const LoginForm: React.FC = () => {
                 Accede a tu cuenta profesional
               </p>
             </div>
-
-            <div className="space-y-4">
+            <form
+              className="space-y-4"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
               <div className="space-y-1">
                 <label
                   htmlFor="email"
@@ -149,7 +188,6 @@ const LoginForm: React.FC = () => {
                   <p className="text-xs text-red-600">{errors.email}</p>
                 )}
               </div>
-
               <div className="space-y-1">
                 <label
                   htmlFor="password"
@@ -190,7 +228,11 @@ const LoginForm: React.FC = () => {
                   <p className="text-xs text-red-600">{errors.password}</p>
                 )}
               </div>
-
+              {errors.general && (
+                <div className="text-xs text-red-600 text-center mb-2">
+                  {errors.general}
+                </div>
+              )}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2">
                 <div className="flex items-center">
                   <input
@@ -206,23 +248,22 @@ const LoginForm: React.FC = () => {
                     Recordarme
                   </label>
                 </div>
-                <a
-                  href="#"
-                  className="text-sm text-red-600 hover:text-red-500 font-medium transition-colors"
+                <button
+                  type="button"
+                  className="text-sm text-red-600 hover:text-red-500 font-medium transition-colors border-none bg-transparent p-0"
+                  onClick={() => navigate("/forgot-password")}
                 >
                   ¿Olvidaste tu contraseña?
-                </a>
+                </button>
               </div>
-
               <button
                 type="submit"
-                onClick={handleSubmit}
-                className="w-full bg-red-700 hover:bg-red-800 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02] mt-6"
+                disabled={loading}
+                className="w-full bg-red-700 hover:bg-red-800 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02] mt-6 disabled:opacity-70"
               >
                 <LogIn className="w-4 h-4" />
-                <span>Iniciar Sesión</span>
+                <span>{loading ? "Iniciando..." : "Iniciar Sesión"}</span>
               </button>
-
               <div className="relative my-5">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300"></div>
@@ -233,7 +274,6 @@ const LoginForm: React.FC = () => {
                   </span>
                 </div>
               </div>
-
               <div className="text-center">
                 <button
                   onClick={() => navigate("/signin")}
@@ -242,7 +282,7 @@ const LoginForm: React.FC = () => {
                   Solicitar acceso al sistema
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

@@ -1,97 +1,151 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff, User, Lock, Mail, UserPlus, Phone, Building, MapPin, Calendar, CreditCard } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  Eye,
+  EyeOff,
+  User,
+  Lock,
+  Mail,
+  UserPlus,
+  Phone,
+  Building,
+  MapPin,
+  Calendar,
+  CreditCard,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo2.png";
 
 const SignInForm: React.FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    email: '',
-    password: '',
-    telefono: '',
-    direccion: '',
-    fecha_nacimiento: '',
-    genero: '',
-    numero_identificacion: '',
-    tipo_identificacion: ''
+    nombre: "",
+    apellido: "",
+    email: "",
+    password: "",
+    telefono: "",
+    direccion: "",
+    fecha_nacimiento: "",
+    genero: "",
+    numero_identificacion: "",
+    tipo_identificacion: "",
+    terms: false,
   });
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+
+    let fieldValue: string | boolean = value;
+
+    if (e.target instanceof HTMLInputElement && type === "checkbox") {
+      fieldValue = e.target.checked;
+    }
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: fieldValue,
     }));
-    
+
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ''
+        [name]: "",
       }));
     }
   };
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
-    
-    if (!formData.nombre.trim()) {
-      newErrors.nombre = 'El nombre es requerido';
-    }
-    
-    if (!formData.apellido.trim()) {
-      newErrors.apellido = 'El apellido es requerido';
-    }
-    
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.nombre.trim()) newErrors.nombre = "El nombre es requerido";
+    if (!formData.apellido.trim())
+      newErrors.apellido = "El apellido es requerido";
+
     if (!formData.email) {
-      newErrors.email = 'El correo electrónico es requerido';
+      newErrors.email = "El correo electrónico es requerido";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Formato de correo electrónico inválido';
+      newErrors.email = "Formato de correo electrónico inválido";
     }
-    
+
     if (!formData.password) {
-      newErrors.password = 'La contraseña es requerida';
+      newErrors.password = "La contraseña es requerida";
     } else if (formData.password.length < 8) {
-      newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
+      newErrors.password = "La contraseña debe tener al menos 8 caracteres";
     }
-    
-    if (!formData.telefono.trim()) {
-      newErrors.telefono = 'El teléfono es requerido';
-    }
-    
-    if (!formData.direccion.trim()) {
-      newErrors.direccion = 'La dirección es requerida';
-    }
-    
-    if (!formData.fecha_nacimiento) {
-      newErrors.fecha_nacimiento = 'La fecha de nacimiento es requerida';
-    }
-    
-    if (!formData.genero) {
-      newErrors.genero = 'El género es requerido';
-    }
-    
-    if (!formData.numero_identificacion.trim()) {
-      newErrors.numero_identificacion = 'El número de identificación es requerido';
-    }
-    
-    if (!formData.tipo_identificacion) {
-      newErrors.tipo_identificacion = 'El tipo de identificación es requerido';
-    }
-    
+
+    if (!formData.telefono.trim())
+      newErrors.telefono = "El teléfono es requerido";
+    if (!formData.direccion.trim())
+      newErrors.direccion = "La dirección es requerida";
+    if (!formData.fecha_nacimiento)
+      newErrors.fecha_nacimiento = "La fecha de nacimiento es requerida";
+    if (!formData.genero) newErrors.genero = "El género es requerido";
+    if (!formData.numero_identificacion.trim())
+      newErrors.numero_identificacion =
+        "El número de identificación es requerido";
+    if (!formData.tipo_identificacion)
+      newErrors.tipo_identificacion = "El tipo de identificación es requerido";
+
+    if (!formData.terms)
+      newErrors.terms = "Debes aceptar los términos y condiciones";
+
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = validateForm();
-    
+
     if (Object.keys(newErrors).length === 0) {
-      console.log('Datos de registro:', formData);
-      alert('¡Registro exitoso! Tu solicitud será revisada por el administrador.');
+      setLoading(true);
+
+      const name = `${formData.nombre} ${formData.apellido}`.trim();
+      const contactInfo = [
+        formData.telefono,
+        formData.direccion,
+        formData.numero_identificacion,
+        formData.tipo_identificacion,
+      ].join(",");
+      const clinicalInfo = `Género: ${formData.genero}, Fecha Nacimiento: ${formData.fecha_nacimiento}`;
+
+      try {
+        const res = await fetch("http://localhost:4000/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email: formData.email,
+            password: formData.password,
+            contactInfo,
+            clinicalInfo,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert(
+            "¡Registro exitoso! Tu solicitud será revisada por el administrador."
+          );
+          navigate("/login");
+        } else {
+          setErrors((prev) => ({
+            ...prev,
+            general: data.message || "Ocurrió un error al registrar.",
+          }));
+        }
+      } catch (error) {
+        setErrors((prev) => ({
+          ...prev,
+          general: "Error al conectar con el servidor",
+        }));
+      } finally {
+        setLoading(false);
+      }
     } else {
       setErrors(newErrors);
     }
@@ -101,19 +155,19 @@ const SignInForm: React.FC = () => {
     <div className="min-h-[80vh] bg-gray-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          
           <div className="flex flex-col gap-8">
             <div className="flex justify-center md:justify-start">
               <img src={Logo} alt="Logo UMB" className="object-contain" />
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-700">
               <h4 className="text-xl font-semibold text-gray-800 mb-3">
                 Registro de Profesionales
               </h4>
               <p className="text-gray-600 leading-relaxed">
-                Solicita acceso al sistema especializado para el manejo de pacientes con pie diabético. 
-                Tu registro será revisado y aprobado por nuestro equipo administrativo.
+                Solicita acceso al sistema especializado para el manejo de
+                pacientes con pie diabético. Tu registro será revisado y
+                aprobado por nuestro equipo administrativo.
               </p>
             </div>
 
@@ -163,26 +217,35 @@ const SignInForm: React.FC = () => {
 
           <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
             <div className="mb-4">
-              <button 
-                onClick={() => navigate('/login')}
+              <button
+                onClick={() => navigate("/login")}
                 className="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1"
               >
                 ← Volver al login
               </button>
             </div>
-            
+
             <div className="text-center mb-8">
               <div className="w-16 h-16 bg-red-700 rounded-full flex items-center justify-center mx-auto mb-4">
                 <UserPlus className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900">Registro</h2>
-              <p className="text-gray-600 mt-2">Solicita acceso como profesional</p>
+              <p className="text-gray-600 mt-2">
+                Solicita acceso como profesional
+              </p>
             </div>
 
-            <div className="space-y-6">
+            <form
+              className="space-y-6"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="nombre" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="nombre"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Nombre
                   </label>
                   <div className="relative">
@@ -196,7 +259,9 @@ const SignInForm: React.FC = () => {
                       value={formData.nombre}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.nombre ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.nombre
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                       placeholder="Tu nombre"
                     />
@@ -205,9 +270,11 @@ const SignInForm: React.FC = () => {
                     <p className="text-sm text-red-600">{errors.nombre}</p>
                   )}
                 </div>
-
                 <div className="space-y-2">
-                  <label htmlFor="apellido" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="apellido"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Apellido
                   </label>
                   <div className="relative">
@@ -221,7 +288,9 @@ const SignInForm: React.FC = () => {
                       value={formData.apellido}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.apellido ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.apellido
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                       placeholder="Tu apellido"
                     />
@@ -233,7 +302,10 @@ const SignInForm: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Correo Electrónico
                 </label>
                 <div className="relative">
@@ -247,7 +319,9 @@ const SignInForm: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                      errors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                      errors.email
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
                     }`}
                     placeholder="tu.email@ejemplo.com"
                   />
@@ -258,7 +332,10 @@ const SignInForm: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Contraseña
                 </label>
                 <div className="relative">
@@ -266,13 +343,15 @@ const SignInForm: React.FC = () => {
                     <Lock className="h-5 w-5 text-gray-400" />
                   </div>
                   <input
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
                     className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                      errors.password ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                      errors.password
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
                     }`}
                     placeholder="••••••••"
                   />
@@ -295,7 +374,10 @@ const SignInForm: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="telefono" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="telefono"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Teléfono
                   </label>
                   <div className="relative">
@@ -309,7 +391,9 @@ const SignInForm: React.FC = () => {
                       value={formData.telefono}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.telefono ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.telefono
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                       placeholder="3001234567"
                     />
@@ -320,7 +404,10 @@ const SignInForm: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="direccion" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="direccion"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Dirección
                   </label>
                   <div className="relative">
@@ -334,7 +421,9 @@ const SignInForm: React.FC = () => {
                       value={formData.direccion}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.direccion ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.direccion
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                       placeholder="Calle 123 #45-67"
                     />
@@ -347,7 +436,10 @@ const SignInForm: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="fecha_nacimiento" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="fecha_nacimiento"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Fecha de Nacimiento
                   </label>
                   <div className="relative">
@@ -361,17 +453,24 @@ const SignInForm: React.FC = () => {
                       value={formData.fecha_nacimiento}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.fecha_nacimiento ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.fecha_nacimiento
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                     />
                   </div>
                   {errors.fecha_nacimiento && (
-                    <p className="text-sm text-red-600">{errors.fecha_nacimiento}</p>
+                    <p className="text-sm text-red-600">
+                      {errors.fecha_nacimiento}
+                    </p>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="genero" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="genero"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Género
                   </label>
                   <div className="relative">
@@ -384,14 +483,18 @@ const SignInForm: React.FC = () => {
                       value={formData.genero}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.genero ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.genero
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                     >
                       <option value="">Seleccionar género</option>
                       <option value="Masculino">Masculino</option>
                       <option value="Femenino">Femenino</option>
                       <option value="Otro">Otro</option>
-                      <option value="Prefiero no decir">Prefiero no decir</option>
+                      <option value="Prefiero no decir">
+                        Prefiero no decir
+                      </option>
                     </select>
                   </div>
                   {errors.genero && (
@@ -402,7 +505,10 @@ const SignInForm: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="tipo_identificacion" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="tipo_identificacion"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Tipo de Identificación
                   </label>
                   <div className="relative">
@@ -415,26 +521,43 @@ const SignInForm: React.FC = () => {
                       value={formData.tipo_identificacion}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.tipo_identificacion ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.tipo_identificacion
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                     >
                       <option value="">Seleccionar tipo</option>
-                      <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
-                      <option value="Cédula de Extranjería">Cédula de Extranjería</option>
-                      <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                      <option value="Cédula de Ciudadanía">
+                        Cédula de Ciudadanía
+                      </option>
+                      <option value="Cédula de Extranjería">
+                        Cédula de Extranjería
+                      </option>
+                      <option value="Tarjeta de Identidad">
+                        Tarjeta de Identidad
+                      </option>
                       <option value="Pasaporte">Pasaporte</option>
                       <option value="Registro Civil">Registro Civil</option>
-                      <option value="Permiso Especial de Permanencia">Permiso Especial de Permanencia (PEP)</option>
-                      <option value="Permiso por Protección Temporal">Permiso por Protección Temporal (PPT)</option>
+                      <option value="Permiso Especial de Permanencia">
+                        Permiso Especial de Permanencia (PEP)
+                      </option>
+                      <option value="Permiso por Protección Temporal">
+                        Permiso por Protección Temporal (PPT)
+                      </option>
                     </select>
                   </div>
                   {errors.tipo_identificacion && (
-                    <p className="text-sm text-red-600">{errors.tipo_identificacion}</p>
+                    <p className="text-sm text-red-600">
+                      {errors.tipo_identificacion}
+                    </p>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="numero_identificacion" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="numero_identificacion"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Número de Identificación
                   </label>
                   <div className="relative">
@@ -448,13 +571,17 @@ const SignInForm: React.FC = () => {
                       value={formData.numero_identificacion}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
-                        errors.numero_identificacion ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        errors.numero_identificacion
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
                       }`}
                       placeholder="123456789"
                     />
                   </div>
                   {errors.numero_identificacion && (
-                    <p className="text-sm text-red-600">{errors.numero_identificacion}</p>
+                    <p className="text-sm text-red-600">
+                      {errors.numero_identificacion}
+                    </p>
                   )}
                 </div>
               </div>
@@ -464,40 +591,55 @@ const SignInForm: React.FC = () => {
                   id="terms"
                   name="terms"
                   type="checkbox"
+                  checked={formData.terms}
+                  onChange={handleInputChange}
                   className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded mt-1"
                 />
-                <label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed">
-                  Acepto los términos y condiciones del sistema y autorizo el procesamiento de mis datos 
-                  personales para la validación de mi perfil profesional.
+                <label
+                  htmlFor="terms"
+                  className="text-sm text-gray-700 leading-relaxed"
+                >
+                  Acepto los términos y condiciones del sistema y autorizo el
+                  procesamiento de mis datos personales para la validación de mi
+                  perfil profesional.
                 </label>
               </div>
+              {errors.terms && (
+                <p className="text-sm text-red-600">{errors.terms}</p>
+              )}
+
+              {errors.general && (
+                <div className="text-red-600 text-center mb-2">
+                  {errors.general}
+                </div>
+              )}
 
               <button
                 type="submit"
-                onClick={handleSubmit}
-                className="w-full bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                disabled={loading}
+                className="w-full bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:opacity-70"
               >
                 <UserPlus className="w-5 h-5" />
-                <span>Enviar Solicitud</span>
+                <span>{loading ? "Registrando..." : "Enviar Solicitud"}</span>
               </button>
 
               <div className="text-center">
                 <p className="text-sm text-gray-600">
-                  ¿Ya tienes una cuenta?{' '}
-                  <button 
-                    onClick={() => navigate('/login')}
+                  ¿Ya tienes una cuenta?{" "}
+                  <button
+                    type="button"
+                    onClick={() => navigate("/login")}
                     className="text-red-600 hover:text-red-500 font-medium transition-colors cursor-pointer border-none bg-transparent p-0"
                   >
                     Iniciar sesión
                   </button>
                 </p>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default SignInForm;
