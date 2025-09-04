@@ -10,7 +10,7 @@ const Profile_Patient: React.FC = () => {
   const [loadingNews, setLoadingNews] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/news")
+    fetch("/api/news")
       .then((res) => res.json())
       .then((data) => setNews(data))
       .catch(() => setNews([]))

@@ -23,7 +23,7 @@ const ProfilePatient: React.FC<ProfilePatientProps> = ({ userId }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:4000/api/patients/user/${userId}`, {
+    fetch(`/api/patients/user/${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -75,7 +75,7 @@ const ProfilePatient: React.FC<ProfilePatientProps> = ({ userId }) => {
     const clinicalInfo = `Género: ${form.genero}, Fecha Nacimiento: ${form.fechaNacimiento}`;
     try {
       const res = await fetch(
-        `http://localhost:4000/api/patients/${patient.id}`,
+        `/api/patients/${patient.id}`,
         {
           method: "PUT",
           headers: {

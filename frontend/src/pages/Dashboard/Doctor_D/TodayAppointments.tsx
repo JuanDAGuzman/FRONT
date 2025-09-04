@@ -7,7 +7,7 @@ const ModalBase: React.FC<{
   children: React.ReactNode;
   onClose: () => void;
   widthClass?: string;
-}> = ({ open, title, children, onClose, widthClass }) => {
+}> = ({ open, title, children, widthClass }) => {
   if (!open) return null;
   return (
     <div
@@ -66,7 +66,7 @@ const MedicalHistoryModal: React.FC<{
     setError("");
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("http://localhost:4000/api/medical-history", {
+      const res = await fetch("/api/medical-history", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -178,7 +178,7 @@ const RecordModal: React.FC<{
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        "http://localhost:4000/api/diabetic-foot-records",
+        "/api/diabetic-foot-records",
         {
           method: "POST",
           headers: {
@@ -336,7 +336,7 @@ const TodayAppointments: React.FC<{ doctorId: number }> = ({ doctorId }) => {
     ).toISOString();
 
     fetch(
-      `http://localhost:4000/api/appointments?doctorId=${doctorId}&start=${start}&end=${end}`,
+      `/api/appointments?doctorId=${doctorId}&start=${start}&end=${end}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -387,8 +387,8 @@ const TodayAppointments: React.FC<{ doctorId: number }> = ({ doctorId }) => {
     if (!selectedAppointmentId) return;
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(
-        `http://localhost:4000/api/appointments/${selectedAppointmentId}`,
+      await fetch(
+        `/api/appointments/${selectedAppointmentId}`,
         {
           method: "PUT", 
           headers: {

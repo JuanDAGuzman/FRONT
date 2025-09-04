@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import styles from './agendar_citas_Doc.module.css';
-import { useNavigate } from 'react-router-dom';
-import Navbar_G from '../../../../components/NavBars/Navbar_Globla';
+import React, { useState } from "react";
+import styles from "./agendar_citas_Doc.module.css";
+import { useNavigate } from "react-router-dom";
+import Navbar_G from "../../../../components/NavBars/Navbar_Globla";
 
 const agendarcita_doc: React.FC = () => {
   const navigate = useNavigate();
-  const [cedulaPaciente, setCedulaPaciente] = useState('');
-  const [fecha, setFecha] = useState('');
-  const { hora, setHora } = useState('');
-  const [motivo, setMotivo] = useState('');
-  const [tipo, setTipo] = useState<'Presencial' | 'Virtual'>('Presencial');
+  const [cedulaPaciente, setCedulaPaciente] = useState("");
+//  const [fecha, setFecha] = useState("");
+//  const [hora, setHora] = useState("");
+//  const [motivo, setMotivo] = useState("");
+//  const [tipo, setTipo] = useState<"Presencial" | "Virtual">("Presencial");
 
   return (
     <div className={styles.agendar_citas_Doc}>
@@ -19,7 +19,7 @@ const agendarcita_doc: React.FC = () => {
         profileImg="public/user.png"
         centerText="Nombre, Aca podras gestionar las citas de tus pacientes"
         menuItems={[]}
-        onLogout={() => navigate('/Support_D')}
+        onLogout={() => navigate("/Support_D")}
         logoutText="Soporte"
       />
 
@@ -39,7 +39,7 @@ const agendarcita_doc: React.FC = () => {
             <input
               type="text"
               value={cedulaPaciente}
-              onChange={e => setCedulaPaciente(e.target.value)}
+              onChange={(e) => setCedulaPaciente(e.target.value)}
               placeholder="Buscar por Cédula"
             />
           </div>

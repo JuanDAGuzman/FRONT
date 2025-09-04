@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { apiFetch } from "../../lib/api.ts";
+
 import {
   Calendar,
   Clock,
@@ -6,7 +8,6 @@ import {
   User,
   ChevronLeft,
   ChevronRight,
-  Bell,
 } from "lucide-react";
 
 function Modal({
@@ -37,14 +38,14 @@ function Modal({
 export interface Appointment {
   id: number;
   title: string;
-  date: string; 
+  date: string;
   time: string;
   doctor: string;
   location: string;
   status: string;
   type: string;
   meetingLink?: string | null;
-  fullDate?: string; 
+  fullDate?: string;
 }
 
 interface EventsCalendarProps {
@@ -61,12 +62,13 @@ const EventsCalendar: React.FC<EventsCalendarProps> = ({ patientId }) => {
   const pageSize = 3;
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    fetch(`http://localhost:4000/api/appointments?patientId=${patientId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await apiFetch<any[]>(
+          `/api/appointments?patientId=${patientId}`
+        );
+        if (cancelled) return;
         if (Array.isArray(data)) {
           const citas = data.map((cita: any) => ({
             id: cita.id,
@@ -82,10 +84,7 @@ const EventsCalendar: React.FC<EventsCalendarProps> = ({ patientId }) => {
               hour: "2-digit",
               minute: "2-digit",
             }),
-            doctor:
-              cita.Doctor && cita.Doctor.User
-                ? cita.Doctor.User.name
-                : "Por asignar",
+            doctor: cita.Doctor?.User?.name ?? "Por asignar",
             location:
               cita.type === "virtual"
                 ? "Online"
@@ -93,12 +92,19 @@ const EventsCalendar: React.FC<EventsCalendarProps> = ({ patientId }) => {
             status: cita.status,
             type: cita.type,
             meetingLink: cita.meetingLink,
-            fullDate: cita.date, 
+            fullDate: cita.date,
           }));
           setAppointments(citas);
         }
-      });
-  }, [patientId, currentDate]);
+      } catch (e) {
+        // opcional: setear estado de error
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // ⚠️ No dependas de currentDate aquí: dispara refetch innecesario
+  }, [patientId]);
 
   const months = [
     "Enero",

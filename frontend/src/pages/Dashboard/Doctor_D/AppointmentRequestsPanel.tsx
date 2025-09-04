@@ -51,7 +51,7 @@ const AppointmentRequestsPanel: React.FC = () => {
 
   const reloadRequests = () => {
     setLoading(true);
-    fetch(`http://localhost:4000/api/appointment-requests`, {
+    fetch(`/api/appointment-requests`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
@@ -72,7 +72,7 @@ const AppointmentRequestsPanel: React.FC = () => {
     if (missing.length === 0) return;
     Promise.all(
       missing.map((id) =>
-        fetch(`http://localhost:4000/api/patients/by-patient-id/${id}`, {
+        fetch(`/api/patients/by-patient-id/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((res) => (res.ok ? res.json() : null))
@@ -146,7 +146,7 @@ const AppointmentRequestsPanel: React.FC = () => {
     try {
       setSaving(true);
 
-      const create = await fetch(`http://localhost:4000/api/appointments`, {
+      const create = await fetch(`/api/appointments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -162,7 +162,7 @@ const AppointmentRequestsPanel: React.FC = () => {
 
 
       const upd = await fetch(
-        `http://localhost:4000/api/appointment-requests/${modalReq.id}`,
+        `/api/appointment-requests/${modalReq.id}`,
         {
           method: "PUT",
           headers: {

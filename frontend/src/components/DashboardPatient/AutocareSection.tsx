@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Brain, Play, FileText, ExternalLink } from "lucide-react";
+import { BASE_URL } from "../../lib/api";
+
 
 const FETCH_INTERVAL = 180000;
 
 const fetchRandomTip = async () => {
-  const res = await fetch("http://localhost:4000/api/health-tips/random");
+  if (!BASE_URL) throw new Error("VITE_API_URL no configurada");
+  const res = await fetch(`${BASE_URL}/api/health-tips/random`);
+  if (!res.ok) throw new Error("Error obteniendo tip");
   const data = await res.json();
   return data.tip;
 };

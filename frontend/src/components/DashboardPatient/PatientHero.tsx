@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Bell, X } from "lucide-react";
+import { X } from "lucide-react";
+import { apiFetch } from "../../lib/api.ts";
 
 const Modal: React.FC<{ onClose: () => void; children: React.ReactNode }> = ({
   onClose,
@@ -42,15 +43,21 @@ const LabResultsModal: React.FC<{
   useEffect(() => {
     if (!show) return;
     setLoading(true);
-    const token = localStorage.getItem("token");
-    fetch(`http://localhost:4000/api/lab-results?patientId=${patientId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await apiFetch<any[]>(
+          `/api/lab-results?patientId=${patientId}`
+        );
+        if (cancelled) return;
         setResults(Array.isArray(data) ? data : []);
-        setLoading(false);
-      });
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [show, patientId]);
 
   if (!show) return null;
@@ -106,7 +113,7 @@ const PatientHero: React.FC<PatientHeroProps> = ({ patientId }) => {
   const [virtual, setVirtual] = useState<any | null>(null);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [presencialInfo, setPresencialInfo] = useState<any | null>(null);
-  const [showLabModal, setShowLabModal] = useState(false); 
+  const [showLabModal, setShowLabModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [requestMessage, setRequestMessage] = useState("");
   const [preferredDate, setPreferredDate] = useState("");
@@ -119,90 +126,81 @@ const PatientHero: React.FC<PatientHeroProps> = ({ patientId }) => {
     setRequestLoading(true);
     setRequestSuccess(false);
     setRequestError(null);
-
-    const token = localStorage.getItem("token");
     try {
-      const res = await fetch(
-        "http://localhost:4000/api/appointment-requests",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            patientId,
-            message: requestMessage,
-            preferredDate: preferredDate
-              ? new Date(preferredDate).toISOString()
-              : null,
-          }),
-        }
-      );
-      if (res.ok) {
-        setRequestSuccess(true);
-        setRequestMessage("");
-        setPreferredDate("");
-      } else {
-        const data = await res.json();
-        setRequestError(data?.error || "Error enviando la solicitud.");
-      }
+      const payload = {
+        patientId,
+        message: requestMessage,
+        preferredDate: preferredDate
+          ? new Date(preferredDate).toISOString()
+          : null,
+      };
+      await apiFetch(`/api/appointment-requests`, {
+        method: "POST",
+        body: JSON.stringify(payload),
+      });
+      setRequestSuccess(true);
+      setRequestMessage("");
+      setPreferredDate("");
     } catch (err: any) {
-      setRequestError("Error de conexión");
+      setRequestError(err?.message || "Error enviando la solicitud.");
+    } finally {
+      setRequestLoading(false);
     }
-    setRequestLoading(false);
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    fetch(
-      `http://localhost:4000/api/patient-treatments?patientId=${patientId}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => setTratamientos(Array.isArray(data) ? data.length : 0))
-      .catch(() => setTratamientos(0));
-
-    fetch(`http://localhost:4000/api/appointments?patientId=${patientId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setConsultas(Array.isArray(data) ? data.length : 0);
-
-        const now = new Date();
-        const proximaPresencial = data.find(
-          (cita: any) =>
-            cita.type === "presencial" &&
-            new Date(cita.date) >= now &&
-            cita.status === "programada"
+    let cancelled = false;
+    (async () => {
+      try {
+        // 1) Tratamientos
+        const t = await apiFetch<any[]>(
+          `/api/patient-treatments?patientId=${patientId}`
         );
-        const proximaVirtual = data.find(
-          (cita: any) =>
-            cita.type === "virtual" &&
-            new Date(cita.date) >= now &&
-            cita.status === "programada"
-        );
-        setPresencial(proximaPresencial || null);
-        setVirtual(proximaVirtual || null);
-      })
-      .catch(() => {
-        setConsultas(0);
-        setPresencial(null);
-        setVirtual(null);
-      });
+        if (!cancelled) setTratamientos(Array.isArray(t) ? t.length : 0);
 
-    fetch(
-      `http://localhost:4000/api/diabetic-foot-records?patientId=${patientId}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
+        // 2) Citas
+        const appts = await apiFetch<any[]>(
+          `/api/appointments?patientId=${patientId}`
+        );
+        if (!cancelled) {
+          setConsultas(Array.isArray(appts) ? appts.length : 0);
+
+          const now = new Date();
+          const proximaPresencial = appts.find(
+            (c: any) =>
+              c.type === "presencial" &&
+              new Date(c.date) >= now &&
+              c.status === "programada"
+          );
+          const proximaVirtual = appts.find(
+            (c: any) =>
+              c.type === "virtual" &&
+              new Date(c.date) >= now &&
+              c.status === "programada"
+          );
+          setPresencial(proximaPresencial || null);
+          setVirtual(proximaVirtual || null);
+        }
+
+        // 3) Evaluaciones (pie diabético)
+        const evals = await apiFetch<any[]>(
+          `/api/diabetic-foot-records?patientId=${patientId}`
+        );
+        if (!cancelled)
+          setEvaluaciones(Array.isArray(evals) ? evals.length : 0);
+      } catch {
+        if (!cancelled) {
+          setTratamientos(0);
+          setConsultas(0);
+          setEvaluaciones(0);
+          setPresencial(null);
+          setVirtual(null);
+        }
       }
-    )
-      .then((res) => res.json())
-      .then((data) => setEvaluaciones(Array.isArray(data) ? data.length : 0))
-      .catch(() => setEvaluaciones(0));
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [patientId]);
 
   return (

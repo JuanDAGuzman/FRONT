@@ -5,6 +5,7 @@ import PatientHero from "../../../components/DashboardPatient/PatientHero";
 import EventsCalendar from "../../../components/DashboardPatient/EventsCalendar";
 import Footer from "../../../components/Footer/Footer";
 import AutocareSection from "../../../components/DashboardPatient/AutocareSection";
+import { apiFetch } from "../../../lib/api.ts";
 
 interface User {
   id: number;
@@ -32,19 +33,33 @@ const Patient_D: React.FC = () => {
       return;
     }
 
-    fetch(`http://localhost:4000/api/patients/user/${user.id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.User && data.User.name && data.User.role) {
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await apiFetch<Patient>(`/api/patients/user/${user.id}`);
+        if (cancelled) return;
+        if (data?.User?.name && data?.User?.role) {
           setPatient(data);
         } else {
           setPatient(null);
         }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      } catch (err: any) {
+        // Si tu api.ts lanza "No autorizado (401)" puedes mandar a login:
+        if (typeof err?.message === "string" && err.message.includes("401")) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          window.location.href = "/login";
+          return;
+        }
+        setPatient(null);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (loading) return <div>Cargando...</div>;

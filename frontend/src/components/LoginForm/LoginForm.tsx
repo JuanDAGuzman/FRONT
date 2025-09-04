@@ -53,7 +53,7 @@ const LoginForm: React.FC = () => {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:4000/api/auth/login", {
+        const res = await fetch("https://sgpd.onrender.com/api/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
